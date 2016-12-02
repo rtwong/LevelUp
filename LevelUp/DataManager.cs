@@ -94,11 +94,12 @@ namespace LevelUp
                 StreamReader sr = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LevelUp");
                 line = sr.ReadLine();
                 sr.Close();
+                Console.WriteLine("beep");
                 return JsonConvert.DeserializeObject<List<Skill>>(line);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: " + e.Message);
+                Console.WriteLine("No File found, or read-error occurred.");
                 return new List<Skill>();
             }
         }

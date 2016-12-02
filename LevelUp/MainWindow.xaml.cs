@@ -35,15 +35,6 @@ namespace LevelUp
             List<Category> list2 = new List<Category> { Category.STR };
             List<Category> list3 = new List<Category> { Category.CRT };
 
-            dataManager.add_data("biking", 2, list1);
-            dataManager.add_data("skiing", 3, list2);
-            dataManager.add_data("painting", 1, list3);
-
-            dataManager.update_data("painting", 100);
-
-
-            //Console.WriteLine(convert_to_level(99));
-
 
             populate();
         }
@@ -51,6 +42,9 @@ namespace LevelUp
         // returns levels, remainder xp, xp to next level
         private Tuple<double, double, double> convert_to_level(int hours)
         {
+            Console.WriteLine(hours);
+            Console.WriteLine("blarg");
+
             double xp = hours * 60;
             double current_level = 0;
             double remainder_xp = 0;
@@ -165,6 +159,7 @@ namespace LevelUp
             foreach (Skill entry in dataManager.data)
             {
                 addSkillToView(entry);
+                Console.WriteLine(entry.hours);
             }
         }
 
@@ -172,12 +167,15 @@ namespace LevelUp
         
         private void addSkillToView(Skill skillToAdd)
         {
+            Tuple<double, double, double> level_and_xp = convert_to_level(skillToAdd.hours);
+            Console.WriteLine(level_and_xp);
+            
 
-            var skillPanel = new WrapPanel();
+            WrapPanel skillPanel = new WrapPanel();
             skillPanel.Height = 58;
             skillPanel.Width = 685;
 
-            var skillPic = new Image();
+            Image skillPic = new Image();
             skillPic.Height = 48;
             skillPic.Width = 48;
 
@@ -200,29 +198,33 @@ namespace LevelUp
                 }
             }
 
-            var levelPic = new Image();
-            levelPic.Height = 48;
-            levelPic.Width = 48;
-            levelPic.Source = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+            Label levelLabel = new Label();
+            levelLabel.Height = 48;
+            levelLabel.Width = 48;
+            levelLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
+            levelLabel.FontSize = 40;
+            levelLabel.Content = level_and_xp.Item1;
 
-            var skillLabel = new Label();
+
+            Label skillLabel = new Label();
             skillLabel.Content = skillToAdd.name;
             //skillLabel.AutoSize = false;
             skillLabel.Height = 48;
             skillLabel.Width = 225;
-            //skillLabel.Font = new Font("Microsoft Sans Serif", 20);
+            skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
+            skillLabel.FontSize = 40;
 
-            var skillProgressBar = new ProgressBar();
+            ProgressBar skillProgressBar = new ProgressBar();
             skillProgressBar.Height = 36;
             skillProgressBar.Width = 270;
 
-            var timeAddButton = new Button();
+            Button timeAddButton = new Button();
             timeAddButton.Height = 48;
             timeAddButton.Width = 55;
             timeAddButton.Content = "+";
 
            skillPanel.Children.Add(skillPic);
-           skillPanel.Children.Add(levelPic);
+           skillPanel.Children.Add(levelLabel);
            skillPanel.Children.Add(skillLabel);
            skillPanel.Children.Add(skillProgressBar);
            skillPanel.Children.Add(timeAddButton);

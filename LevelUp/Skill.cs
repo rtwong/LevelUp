@@ -13,7 +13,7 @@ namespace LevelUp
 
         public string name { get; set; }
         public DateTime created { get; set; }
-        public int hours { get; set; } = 0;
+        public int hours { get; set; }
         public List<Category> category { get; set; }
 
 
@@ -22,6 +22,7 @@ namespace LevelUp
             this.name = name;
             this.created = created;
             this.category = category;
+            this.hours = hours;
         }
     }
 }
