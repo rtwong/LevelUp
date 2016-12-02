@@ -45,7 +45,7 @@ namespace LevelUp
             //Console.WriteLine(convert_to_level(99));
 
 
-            //populate();
+            populate();
         }
 
         // returns levels, remainder xp, xp to next level
@@ -120,6 +120,118 @@ namespace LevelUp
 
 
         }
+
+        private void addSkillButtonClick(object sender, RoutedEventArgs e)
+        {
+            AddSkillView dialog = new AddSkillView();
+            dialog.ShowDialog();
+
+            if (dialog.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                Console.Write(dialog.textValue);
+                Console.Write(dialog.creativeValue);
+                Console.Write(dialog.strengthValue);
+                Console.Write(dialog.intellectValue);
+
+                List<Category> category_list = new List<Category> { };
+
+                if (dialog.creativeValue)
+                {
+                    category_list.Add(Category.CRT);
+                }
+                if (dialog.strengthValue)
+                {
+                    category_list.Add(Category.STR);
+                }
+                if (dialog.intellectValue)
+                {
+                    category_list.Add(Category.INT);
+                }
+
+
+                dataManager.add_data(dialog.textValue, 0, category_list);
+                populate();
+            }
+            else
+            {
+                Console.Write("Cancel clicked");
+            }
+        }
+
+        private void populate()
+        {
+            skillContainer.Children.Clear();
+
+            foreach (Skill entry in dataManager.data)
+            {
+                addSkillToView(entry);
+            }
+        }
+
+
+        
+        private void addSkillToView(Skill skillToAdd)
+        {
+
+            var skillPanel = new WrapPanel();
+            skillPanel.Height = 58;
+            skillPanel.Width = 685;
+
+            var skillPic = new Image();
+            skillPic.Height = 48;
+            skillPic.Width = 48;
+
+            
+            if (skillToAdd.category.Count > 0)
+            {
+                if (skillToAdd.category[0] == Category.STR)
+                {
+                    skillPic.Source = new BitmapImage(new Uri("/Icons/str_icon.png", UriKind.RelativeOrAbsolute));
+                }
+
+                if (skillToAdd.category[0] == Category.INT)
+                {
+                    skillPic.Source = new BitmapImage(new Uri("/Icons/int_icon.png", UriKind.RelativeOrAbsolute));
+                }
+
+                if (skillToAdd.category[0] == Category.CRT)
+                {
+                    skillPic.Source = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+                }
+            }
+
+            var levelPic = new Image();
+            levelPic.Height = 48;
+            levelPic.Width = 48;
+            levelPic.Source = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+
+            var skillLabel = new Label();
+            skillLabel.Content = skillToAdd.name;
+            //skillLabel.AutoSize = false;
+            skillLabel.Height = 48;
+            skillLabel.Width = 225;
+            //skillLabel.Font = new Font("Microsoft Sans Serif", 20);
+
+            var skillProgressBar = new ProgressBar();
+            skillProgressBar.Height = 36;
+            skillProgressBar.Width = 270;
+
+            var timeAddButton = new Button();
+            timeAddButton.Height = 48;
+            timeAddButton.Width = 55;
+            timeAddButton.Content = "+";
+
+           skillPanel.Children.Add(skillPic);
+           skillPanel.Children.Add(levelPic);
+           skillPanel.Children.Add(skillLabel);
+           skillPanel.Children.Add(skillProgressBar);
+           skillPanel.Children.Add(timeAddButton);
+
+
+           skillContainer.Children.Add(skillPanel);
+
+        }
+
 
     }
 }
