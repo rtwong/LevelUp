@@ -23,19 +23,14 @@ namespace LevelUp
 
         private DataManager dataManager;
         List<Label> labels;
+        List<WrapPanel> panels;
 
         public MainWindow()
         {
             InitializeComponent();
             dataManager = new DataManager();
             labels = new List<Label>();
-
-            //  ADDING ITEMS
-            List<Category> list1 = new List<Category> { Category.STR };
-            List<Category> list2 = new List<Category> { Category.STR };
-            List<Category> list3 = new List<Category> { Category.CRT };
-
-
+            panels = new List<WrapPanel>();
             populate();
         }
 
@@ -165,6 +160,9 @@ namespace LevelUp
             WrapPanel skillPanel = new WrapPanel();
             skillPanel.Height = 58;
             skillPanel.Width = 685;
+            skillPanel.Name = skillToAdd.identifier;
+            panels.Add(skillPanel);
+
 
             Image skillPic = new Image();
             skillPic.Height = 48;
@@ -208,6 +206,7 @@ namespace LevelUp
             ProgressBar skillProgressBar = new ProgressBar();
             skillProgressBar.Height = 36;
             skillProgressBar.Width = 270;
+            skillProgressBar.Value = progressBarPercent(level_and_xp.Item2, level_and_xp.Item3);
 
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
@@ -227,7 +226,7 @@ namespace LevelUp
 
         }
 
-        public void addHalfHour(object sender, RoutedEventArgs e)
+        private void addHalfHour(object sender, RoutedEventArgs e)
         {
 
             Button clickedButton = (Button)sender;
@@ -239,6 +238,11 @@ namespace LevelUp
                 }
             }
             populate();
+        }
+
+        private double progressBarPercent(double remainder_xp, double xp_to_next_level)
+        {
+            return ((remainder_xp) / (xp_to_next_level + remainder_xp)) * 100;
         }
 
 
