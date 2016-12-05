@@ -42,9 +42,6 @@ namespace LevelUp
         // returns levels, remainder xp, xp to next level
         private Tuple<double, double, double> convert_to_level(double hours)
         {
-            Console.WriteLine(hours);
-            Console.WriteLine("blarg");
-
             double xp = hours * 60;
             double current_level = 0;
             double remainder_xp = 0;
@@ -122,10 +119,6 @@ namespace LevelUp
 
             if (dialog.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                Console.Write(dialog.textValue);
-                Console.Write(dialog.creativeValue);
-                Console.Write(dialog.strengthValue);
-                Console.Write(dialog.intellectValue);
 
                 List<Category> category_list = new List<Category> { };
 
@@ -159,7 +152,6 @@ namespace LevelUp
             foreach (Skill entry in dataManager.data)
             {
                 addSkillToView(entry);
-                Console.WriteLine(entry.hours);
             }
         }
 
@@ -168,7 +160,6 @@ namespace LevelUp
         private void addSkillToView(Skill skillToAdd)
         {
             Tuple<double, double, double> level_and_xp = convert_to_level(skillToAdd.hours);
-            Console.WriteLine(level_and_xp);
 
 
             WrapPanel skillPanel = new WrapPanel();
@@ -220,7 +211,6 @@ namespace LevelUp
 
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
-            Console.Write(skillToAdd.name);
             timeAddButton.Name = skillToAdd.identifier;
             timeAddButton.Height = 48;
             timeAddButton.Width = 55;
