@@ -21,15 +21,16 @@ namespace LevelUp
         }
 
 
-        public void add_data(string s, int h, List<Category> c)
+        public void add_data(string s, double h, List<Category> c)
         {
             try
             {
                 for (int i = 0; i < data.Count; ++i)
                 {
-                    if (data[i].name.ToLower() == s.ToLower())
+                    if (data[i].name.ToLower().Replace(" ","") == s.ToLower().Replace(" ",""))
                     {
                         // TODO: CREATE POPUP WARNING DUPLICATE
+                        // TODO: HANDLE NUMBER INPUTS
                         return;
                     }
                 }
@@ -58,11 +59,11 @@ namespace LevelUp
             write_data();
         }
 
-        public void update_data(string s, int i)
+        public void update_data(string s, double i)
         {
             try
             {
-                data.Find(x => x.name == s).hours += i;
+                data.Find(x => x.identifier == s).hours += i;
             }
             catch (Exception e)
             {
@@ -94,7 +95,7 @@ namespace LevelUp
                 StreamReader sr = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LevelUp");
                 line = sr.ReadLine();
                 sr.Close();
-                Console.WriteLine("beep");
+                
                 return JsonConvert.DeserializeObject<List<Skill>>(line);
             }
             catch (Exception e)

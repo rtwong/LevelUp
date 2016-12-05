@@ -40,7 +40,7 @@ namespace LevelUp
         }
 
         // returns levels, remainder xp, xp to next level
-        private Tuple<double, double, double> convert_to_level(int hours)
+        private Tuple<double, double, double> convert_to_level(double hours)
         {
             Console.WriteLine(hours);
             Console.WriteLine("blarg");
@@ -219,19 +219,36 @@ namespace LevelUp
             skillProgressBar.Width = 270;
 
             Button timeAddButton = new Button();
+            timeAddButton.Click += new RoutedEventHandler(addHalfHour);
+            Console.Write(skillToAdd.name);
+            timeAddButton.Name = skillToAdd.identifier;
             timeAddButton.Height = 48;
             timeAddButton.Width = 55;
             timeAddButton.Content = "+";
 
-           skillPanel.Children.Add(skillPic);
-           skillPanel.Children.Add(levelLabel);
-           skillPanel.Children.Add(skillLabel);
-           skillPanel.Children.Add(skillProgressBar);
-           skillPanel.Children.Add(timeAddButton);
+            skillPanel.Children.Add(skillPic);
+            skillPanel.Children.Add(levelLabel);
+            skillPanel.Children.Add(skillLabel);
+            skillPanel.Children.Add(skillProgressBar);
+            skillPanel.Children.Add(timeAddButton);
 
 
-           skillContainer.Children.Add(skillPanel);
+            skillContainer.Children.Add(skillPanel);
 
+        }
+
+        public void addHalfHour(object sender, RoutedEventArgs e)
+        {
+
+            Button clickedButton = (Button)sender;
+            foreach (Skill entry in dataManager.data)
+            {
+                if (clickedButton.Name == entry.identifier)
+                {
+                    dataManager.update_data(entry.identifier, 0.5);
+                }   
+            }
+            populate();
         }
 
 

@@ -13,16 +13,18 @@ namespace LevelUp
 
         public string name { get; set; }
         public DateTime created { get; set; }
-        public int hours { get; set; }
+        public double hours { get; set; }
         public List<Category> category { get; set; }
+        public string identifier;
 
 
-        public Skill(string name, DateTime created, int hours, List<Category> category)
+        public Skill(string name, DateTime created, double hours, List<Category> category)
         {
             this.name = name;
             this.created = created;
             this.category = category;
             this.hours = hours;
+            this.identifier = "_" + System.Guid.NewGuid().ToString().Replace("-","");
         }
     }
 }
