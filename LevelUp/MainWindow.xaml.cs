@@ -164,12 +164,12 @@ namespace LevelUp
         }
 
 
-        
+
         private void addSkillToView(Skill skillToAdd)
         {
             Tuple<double, double, double> level_and_xp = convert_to_level(skillToAdd.hours);
             Console.WriteLine(level_and_xp);
-            
+
 
             WrapPanel skillPanel = new WrapPanel();
             skillPanel.Height = 58;
@@ -179,7 +179,7 @@ namespace LevelUp
             skillPic.Height = 48;
             skillPic.Width = 48;
 
-            
+
             if (skillToAdd.category.Count > 0)
             {
                 if (skillToAdd.category[0] == Category.STR)
@@ -219,19 +219,36 @@ namespace LevelUp
             skillProgressBar.Width = 270;
 
             Button timeAddButton = new Button();
+            timeAddButton.Click += new RoutedEventHandler(addHalfHour);
+            Console.Write(skillToAdd.name);
+            timeAddButton.Name = skillToAdd.identifier;
             timeAddButton.Height = 48;
             timeAddButton.Width = 55;
             timeAddButton.Content = "+";
 
-           skillPanel.Children.Add(skillPic);
-           skillPanel.Children.Add(levelLabel);
-           skillPanel.Children.Add(skillLabel);
-           skillPanel.Children.Add(skillProgressBar);
-           skillPanel.Children.Add(timeAddButton);
+            skillPanel.Children.Add(skillPic);
+            skillPanel.Children.Add(levelLabel);
+            skillPanel.Children.Add(skillLabel);
+            skillPanel.Children.Add(skillProgressBar);
+            skillPanel.Children.Add(timeAddButton);
 
 
-           skillContainer.Children.Add(skillPanel);
+            skillContainer.Children.Add(skillPanel);
 
+        }
+
+        public void addHalfHour(object sender, RoutedEventArgs e)
+        {
+
+            Button clickedButton = (Button)sender;
+            foreach (Skill entry in dataManager.data)
+            {
+                if (clickedButton.Name == entry.identifier)
+                {
+                    dataManager.update_data(entry.identifier, 0.5);
+                }
+            }
+            populate();
         }
 
 

@@ -24,7 +24,7 @@ namespace LevelUp
             this.created = created;
             this.category = category;
             this.hours = hours;
-            this.identifier = "_" + System.Guid.NewGuid().ToString().Replace("-","");
+            this.identifier = "_" + System.Guid.NewGuid().ToString().Replace("-", "");
         }
     }
 }
