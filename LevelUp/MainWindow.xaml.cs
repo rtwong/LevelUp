@@ -245,6 +245,14 @@ namespace LevelUp
             return ((remainder_xp) / (xp_to_next_level + remainder_xp)) * 100;
         }
 
+        private void editButtonClick(object sender, RoutedEventArgs e)
+        {
+            EditSkillsView dialog = new EditSkillsView();
+            dialog.ShowDialog();
 
+            dataManager.fetch();
+            populate();
+            
+        }
     }
 }

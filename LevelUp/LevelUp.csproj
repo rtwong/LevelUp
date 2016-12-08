@@ -67,6 +67,12 @@
     <Compile Include="AddSkillView.Designer.cs">
       <DependentUpon>AddSkillView.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditSkillsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSkillsView.Designer.cs">
+      <DependentUpon>EditSkillsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Skill.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +104,9 @@
     </Compile>
     <EmbeddedResource Include="AddSkillView.resx">
       <DependentUpon>AddSkillView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSkillsView.resx">
+      <DependentUpon>EditSkillsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

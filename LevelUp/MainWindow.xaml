@@ -13,5 +13,6 @@
         </Grid.ColumnDefinitions>
         <WrapPanel x:Name="skillContainer" HorizontalAlignment="Left" Height="595" Margin="10,0,0,-2" VerticalAlignment="Top" Width="647" Grid.ColumnSpan="2"/>
         <Button x:Name="addSkillButton" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="595,600,-224,-146" VerticalAlignment="Top" Width="74" Height="54" Click="addSkillButtonClick"/>
+        <Button x:Name="editButton" Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Height="59" Margin="10,595,0,-61" VerticalAlignment="Top" Width="177" Click="editButtonClick"/>
     </Grid>
 </Window>

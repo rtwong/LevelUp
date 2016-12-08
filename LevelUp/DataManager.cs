@@ -46,11 +46,12 @@ namespace LevelUp
 
         }
 
-        public void remove_data(Skill s)
+        public void remove_data(string identifier)
         {
             try
             {
-                data.Remove(s);
+                Skill skillToRemove = data.Find(x => x.identifier == identifier);
+                data.Remove(skillToRemove);
             }
             catch (Exception e)
             {
@@ -71,6 +72,25 @@ namespace LevelUp
             }
             write_data();
         }
+
+        public void update_name(string newName, string identifier)
+        {
+            try
+            {
+                data.Find(x => x.identifier == identifier).name = newName;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            write_data();
+        }
+
+        public void fetch()
+        {
+           data = read_data();
+        }
+
 
         private void write_data()
         {
