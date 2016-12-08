@@ -250,6 +250,7 @@ namespace LevelUp
             EditSkillsView dialog = new EditSkillsView();
             dialog.ShowDialog();
 
+            //ONLY WORKS WHEN YOU CLICK APPLY
             dataManager.fetch();
             populate();
             
