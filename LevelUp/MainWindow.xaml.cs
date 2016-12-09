@@ -176,20 +176,47 @@ namespace LevelUp
 
             if (skillToAdd.category.Count > 0)
             {
-                if (skillToAdd.category[0] == Category.STR)
+                if(skillToAdd.category.Count == 3)
                 {
-                    skillPic.Source = new BitmapImage(new Uri("/Icons/str_icon.png", UriKind.RelativeOrAbsolute));
+                    skillPic.Source = new BitmapImage(new Uri("/Icons/all_icon.png", UriKind.RelativeOrAbsolute));
+                }
+                
+                if(skillToAdd.category.Count == 2)
+                {
+                    if ((skillToAdd.category.Contains(Category.STR) && (skillToAdd.category.Contains(Category.INT)))){
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/str_int_icon.png", UriKind.RelativeOrAbsolute));
+                    }
+
+                    if ((skillToAdd.category.Contains(Category.STR) && (skillToAdd.category.Contains(Category.CRT))))
+                    {
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/str_crt_icon.png", UriKind.RelativeOrAbsolute));
+                    }
+
+                    if ((skillToAdd.category.Contains(Category.INT) && (skillToAdd.category.Contains(Category.CRT))))
+                    {
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/int_crt_icon.png", UriKind.RelativeOrAbsolute));
+                    }
+
                 }
 
-                if (skillToAdd.category[0] == Category.INT)
+                if (skillToAdd.category.Count == 1)
                 {
-                    skillPic.Source = new BitmapImage(new Uri("/Icons/int_icon.png", UriKind.RelativeOrAbsolute));
+                    if (skillToAdd.category[0] == Category.STR)
+                    {
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/str_icon.png", UriKind.RelativeOrAbsolute));
+                    }
+
+                    if (skillToAdd.category[0] == Category.INT)
+                    {
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/int_icon.png", UriKind.RelativeOrAbsolute));
+                    }
+
+                    if (skillToAdd.category[0] == Category.CRT)
+                    {
+                        skillPic.Source = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+                    }
                 }
 
-                if (skillToAdd.category[0] == Category.CRT)
-                {
-                    skillPic.Source = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
-                }
             }
 
             Label levelLabel = new Label();
