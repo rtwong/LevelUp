@@ -88,7 +88,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(222, 223);
+            this.cancelButton.Location = new System.Drawing.Point(361, 223);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -98,11 +98,11 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(348, 223);
+            this.okButton.Location = new System.Drawing.Point(269, 223);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 6;
-            this.okButton.Text = "OK";
+            this.okButton.Text = "ADD SKILL";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okClick);
             // 
@@ -119,7 +119,7 @@
             this.Controls.Add(this.skillTextBox);
             this.Controls.Add(this.label1);
             this.Name = "AddSkillView";
-            this.Text = "Form1";
+            this.Text = "Add Skill";
             this.ResumeLayout(false);
             this.PerformLayout();
 

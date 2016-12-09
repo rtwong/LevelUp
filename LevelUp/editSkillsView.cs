@@ -70,8 +70,6 @@ namespace LevelUp
 
                 String identifier = (String) skillPanel.Tag;
 
-                //parts.Find(x => x.PartName.Contains("seat")));
-
                 Skill skillNameChange = dataManager.data.Find(x => x.name == identifier);
                 dataManager.update_name(newSkillName, identifier);
             }

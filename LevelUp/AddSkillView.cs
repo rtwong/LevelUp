@@ -54,10 +54,17 @@ namespace LevelUp
             creativeValue = creativeCheckbox.Checked;
             strengthValue = strengthCheckbox.Checked;
             intellectValue = intellectCheckbox.Checked;
+            //yourText.All(char.IsLetterOrDigit)
+            if ((intellectValue || strengthValue || creativeValue) && (textValue.Replace(" ", "").Length > 0))
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-
-            this.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid input.");
+            }
         }
 
     }

@@ -109,6 +109,11 @@ namespace LevelUp
 
         private void addSkillButtonClick(object sender, RoutedEventArgs e)
         {
+            if (dataManager.data.Count >= 10)
+            {
+                MessageBox.Show("Too many skills.");
+                return;
+            } 
             AddSkillView dialog = new AddSkillView();
             dialog.ShowDialog();
 
