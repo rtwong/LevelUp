@@ -65,7 +65,7 @@ namespace LevelUp
             {
                 current_level = Math.Floor(CONSTANT_TO_25 * Math.Sqrt(xp));
                 xp_to_next_level = (((current_level + 1) / CONSTANT_TO_25) * ((current_level + 1) / CONSTANT_TO_25)) - xp;
-                remainder_xp = xp - (((current_level) / CONSTANT_TO_25) * ((current_level) / CONSTANT_TO_25));
+                remainder_xp = 1 + xp - (((current_level) / CONSTANT_TO_25) * ((current_level) / CONSTANT_TO_25));
                 return Tuple.Create(current_level, Math.Floor(remainder_xp), Math.Floor(xp_to_next_level));
 
             }
@@ -79,7 +79,7 @@ namespace LevelUp
             {
                 current_level += Math.Floor(CONSTANT_TO_99 * Math.Sqrt(xp));
                 xp_to_next_level = (((current_level - 24) / CONSTANT_TO_99) * ((current_level - 24) / CONSTANT_TO_99)) - xp;
-                remainder_xp = xp - (((current_level - 25) / CONSTANT_TO_99) * ((current_level - 25) / CONSTANT_TO_99));
+                remainder_xp = 1 + xp - (((current_level - 25) / CONSTANT_TO_99) * ((current_level - 25) / CONSTANT_TO_99));
                 return Tuple.Create(current_level, Math.Floor(remainder_xp), Math.Floor(xp_to_next_level));
 
             }
@@ -234,27 +234,7 @@ namespace LevelUp
             skillLabel.Width = 225;
             skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
             skillLabel.FontSize = 40;
-            /*
-            ProgressBar skillProgressBar = new ProgressBar();
-            skillProgressBar.Height = 36;
-            skillProgressBar.Width = 270;
-            skillProgressBar.Value = progressBarPercent(level_and_xp.Item2, level_and_xp.Item3);
-            */
 
-            /*
-            //Put the progress bar image here
-            var fullImage = new BitmapImage(new Uri("/Images/foreground.png", UriKind.RelativeOrAbsolute));
-            fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
-            //This is where the cropping on the full image is done
-            var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, 7, 20));
- 
-            Image ProgressBarPic = new Image();
-            ProgressBarPic.Height = 48;
-            ProgressBarPic.Width = 270;
-            ProgressBarPic.Stretch = Stretch.None;
-            ProgressBarPic.HorizontalAlignment = HorizontalAlignment.Left;
-            ProgressBarPic.Source = croppedImage;
-            */
             Canvas progressBarCanvas = drawProgressBar(progressBarPercent(level_and_xp.Item2, level_and_xp.Item3));
            
             Button timeAddButton = new Button();
@@ -267,8 +247,6 @@ namespace LevelUp
             skillPanel.Children.Add(skillPic);
             skillPanel.Children.Add(levelLabel);
             skillPanel.Children.Add(skillLabel);
-            //skillPanel.Children.Add(skillProgressBar);
-            //skillPanel.Children.Add(ProgressBarPic);
             skillPanel.Children.Add(progressBarCanvas);
             skillPanel.Children.Add(timeAddButton);
             skillContainer.Children.Add(skillPanel);
@@ -279,6 +257,8 @@ namespace LevelUp
         {
 
             double floor = Math.Floor(percentXP);
+            Console.WriteLine("pxp");
+            Console.WriteLine(percentXP);
             double filled = percentXP / 10;
             double remainder = percentXP % 10;
 
@@ -322,9 +302,6 @@ namespace LevelUp
             {
                 return progressBarCanvas;
             }
-            Console.WriteLine("remainder");
-            Console.WriteLine(remainder);
-            Console.WriteLine(remainderPixels);
             var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, (int) remainderPixels, 20));
 
             Image progressBarPic = new Image();
