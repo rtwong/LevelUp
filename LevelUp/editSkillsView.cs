@@ -59,11 +59,9 @@ namespace LevelUp
 
         private void editSkillsApplyButtonClick(object sender, EventArgs e)
         {
-            //Console.Write(editSkillsContainer.Controls.ToString());
             
             foreach (FlowLayoutPanel skillPanel in editSkillsContainer.Controls.OfType<FlowLayoutPanel>())
             {
-                Console.Write("qweqwe");
                 List<TextBox> textBoxList = skillPanel.Controls.OfType<TextBox>().ToList();
                 TextBox textBox = textBoxList[0];
                 String newSkillName = textBox.Text;

@@ -241,7 +241,7 @@ namespace LevelUp
             skillProgressBar.Value = progressBarPercent(level_and_xp.Item2, level_and_xp.Item3);
             */
 
-            InitializeComponent();
+            /*
             //Put the progress bar image here
             var fullImage = new BitmapImage(new Uri("/Images/foreground.png", UriKind.RelativeOrAbsolute));
             fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
@@ -254,7 +254,9 @@ namespace LevelUp
             ProgressBarPic.Stretch = Stretch.None;
             ProgressBarPic.HorizontalAlignment = HorizontalAlignment.Left;
             ProgressBarPic.Source = croppedImage;
-
+            */
+            Canvas progressBarCanvas = drawProgressBar(progressBarPercent(level_and_xp.Item2, level_and_xp.Item3));
+           
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
             timeAddButton.Name = skillToAdd.identifier;
@@ -266,12 +268,74 @@ namespace LevelUp
             skillPanel.Children.Add(levelLabel);
             skillPanel.Children.Add(skillLabel);
             //skillPanel.Children.Add(skillProgressBar);
-            skillPanel.Children.Add(ProgressBarPic);
+            //skillPanel.Children.Add(ProgressBarPic);
+            skillPanel.Children.Add(progressBarCanvas);
             skillPanel.Children.Add(timeAddButton);
-            
-
             skillContainer.Children.Add(skillPanel);
 
+        }
+
+        private Canvas drawProgressBar(double percentXP)
+        {
+
+            double floor = Math.Floor(percentXP);
+            double filled = percentXP / 10;
+            double remainder = percentXP % 10;
+
+            Canvas progressBarCanvas = new Canvas();
+            progressBarCanvas.Height = 48;
+            progressBarCanvas.Width = 270;
+
+            int paddingOffset = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Image backgroundPic = new Image();
+                backgroundPic.Height = 20;
+                backgroundPic.Width = 15;
+                backgroundPic.Source = new BitmapImage(new Uri("/Images/background.png", UriKind.RelativeOrAbsolute));
+                backgroundPic.Margin = new Thickness(paddingOffset, 0, 0, 0);
+                paddingOffset += 20;
+                progressBarCanvas.Children.Add(backgroundPic);
+            }
+
+            paddingOffset = 0;
+            for (int i = 0; i < filled-1; i++)
+            {
+                Image foregroundPic = new Image();
+                foregroundPic.Height = 20;
+                foregroundPic.Width = 15;
+                foregroundPic.Source = new BitmapImage(new Uri("/Images/foreground.png", UriKind.RelativeOrAbsolute));
+                foregroundPic.Margin = new Thickness(paddingOffset, 0, 0, 0);
+                paddingOffset += 20;
+                progressBarCanvas.Children.Add(foregroundPic);
+            }
+
+            var fullImage = new BitmapImage(new Uri("/Images/foreground.png", UriKind.RelativeOrAbsolute));
+            fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
+
+
+            
+            double remainderPixels = Math.Round((remainder /10) * 15);
+
+            if (remainderPixels == 0)
+            {
+                return progressBarCanvas;
+            }
+
+            var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, (int) remainderPixels, 20));
+
+            Image progressBarPic = new Image();
+            progressBarPic.Height = 20;
+            progressBarPic.Width = 15;
+            progressBarPic.Stretch = Stretch.None;
+            progressBarPic.HorizontalAlignment = HorizontalAlignment.Left;
+            progressBarPic.Source = croppedImage;
+            progressBarPic.Margin = new Thickness(paddingOffset, 0, 0, 0);
+
+            progressBarCanvas.Children.Add(progressBarPic);
+
+            return progressBarCanvas;
         }
 
         private void addHalfHour(object sender, RoutedEventArgs e)
