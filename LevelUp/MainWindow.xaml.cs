@@ -322,7 +322,9 @@ namespace LevelUp
             {
                 return progressBarCanvas;
             }
-
+            Console.WriteLine("remainder");
+            Console.WriteLine(remainder);
+            Console.WriteLine(remainderPixels);
             var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, (int) remainderPixels, 20));
 
             Image progressBarPic = new Image();
