@@ -234,11 +234,26 @@ namespace LevelUp
             skillLabel.Width = 225;
             skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
             skillLabel.FontSize = 40;
-
+            /*
             ProgressBar skillProgressBar = new ProgressBar();
             skillProgressBar.Height = 36;
             skillProgressBar.Width = 270;
             skillProgressBar.Value = progressBarPercent(level_and_xp.Item2, level_and_xp.Item3);
+            */
+
+            InitializeComponent();
+            //Put the progress bar image here
+            var fullImage = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+            fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
+            //This is where the cropping on the full image is done
+            var croppedImage =new CroppedBitmap(fullImage, new Int32Rect(0, 0, 20, 48));
+ 
+            Image ProgressBarPic = new Image();
+            ProgressBarPic.Height = 48;
+            ProgressBarPic.Width = 270;
+            ProgressBarPic.Stretch = Stretch.None;
+            ProgressBarPic.HorizontalAlignment = HorizontalAlignment.Left;
+            ProgressBarPic.Source = croppedImage;
 
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
@@ -250,7 +265,8 @@ namespace LevelUp
             skillPanel.Children.Add(skillPic);
             skillPanel.Children.Add(levelLabel);
             skillPanel.Children.Add(skillLabel);
-            skillPanel.Children.Add(skillProgressBar);
+            //skillPanel.Children.Add(skillProgressBar);
+            skillPanel.Children.Add(ProgressBarPic);
             skillPanel.Children.Add(timeAddButton);
 
 
