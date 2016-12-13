@@ -252,7 +252,7 @@ namespace LevelUp
             skillPanel.Children.Add(skillLabel);
             skillPanel.Children.Add(skillProgressBar);
             skillPanel.Children.Add(timeAddButton);
-
+            
 
             skillContainer.Children.Add(skillPanel);
 
