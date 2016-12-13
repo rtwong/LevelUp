@@ -243,10 +243,10 @@ namespace LevelUp
 
             InitializeComponent();
             //Put the progress bar image here
-            var fullImage = new BitmapImage(new Uri("/Icons/crt_icon.png", UriKind.RelativeOrAbsolute));
+            var fullImage = new BitmapImage(new Uri("/Images/foreground.png", UriKind.RelativeOrAbsolute));
             fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
             //This is where the cropping on the full image is done
-            var croppedImage =new CroppedBitmap(fullImage, new Int32Rect(0, 0, 20, 48));
+            var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, 7, 20));
  
             Image ProgressBarPic = new Image();
             ProgressBarPic.Height = 48;
