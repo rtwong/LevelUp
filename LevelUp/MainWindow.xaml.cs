@@ -223,7 +223,7 @@ namespace LevelUp
             levelLabel.Height = 48;
             levelLabel.Width = 48;
             levelLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            levelLabel.FontSize = 40;
+            levelLabel.FontSize = 30;
             levelLabel.Content = level_and_xp.Item1;
 
 
@@ -231,9 +231,9 @@ namespace LevelUp
             skillLabel.Content = skillToAdd.name;
             //skillLabel.AutoSize = false;
             skillLabel.Height = 48;
-            skillLabel.Width = 225;
+            skillLabel.Width = 150;
             skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            skillLabel.FontSize = 40;
+            skillLabel.FontSize = 30;
 
             Canvas progressBarCanvas = drawProgressBar(progressBarPercent(level_and_xp.Item2, level_and_xp.Item3));
            
@@ -257,8 +257,6 @@ namespace LevelUp
         {
 
             double floor = Math.Floor(percentXP);
-            Console.WriteLine("pxp");
-            Console.WriteLine(percentXP);
             double filled = percentXP / 10;
             double remainder = percentXP % 10;
 
