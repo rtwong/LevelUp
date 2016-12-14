@@ -174,6 +174,7 @@ namespace LevelUp
             skillPic.Width = 48;
 
 
+
             if (skillToAdd.category.Count > 0)
             {
                 if(skillToAdd.category.Count == 3)
@@ -236,13 +237,29 @@ namespace LevelUp
             skillLabel.FontSize = 30;
 
             Canvas progressBarCanvas = drawProgressBar(progressBarPercent(level_and_xp.Item2, level_and_xp.Item3));
-           
+
+            
+
+
+
+            //BitmapImage test = new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png"));
+            ImageBrush levelUpPic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
+            //levelUpPic.ImageSource = test;
+            
+
+
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
             timeAddButton.Name = skillToAdd.identifier;
-            timeAddButton.Height = 48;
-            timeAddButton.Width = 55;
-            timeAddButton.Content = "+";
+            timeAddButton.Height = 36;
+            timeAddButton.Width = 36;
+            timeAddButton.Background = levelUpPic;
+            timeAddButton.BorderThickness = new Thickness(0, 0, 0, 0);
+            timeAddButton.MouseEnter += new MouseEventHandler(mouseEnter);
+            timeAddButton.MouseLeave += new MouseEventHandler(mouseLeave);
+            timeAddButton.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(mouseDown);
+            timeAddButton.MouseLeftButtonUp += new MouseButtonEventHandler(mouseUp);
+
 
             skillPanel.Children.Add(skillPic);
             skillPanel.Children.Add(levelLabel);
@@ -253,6 +270,35 @@ namespace LevelUp
 
         }
 
+        private void mouseEnter(object sender, MouseEventArgs e)
+        {
+            Button hoveredButton = (Button)sender;
+            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_hover.png")));
+            hoveredButton.Background = levelUpPicHover;
+        }
+
+        private void mouseLeave(object sender, MouseEventArgs e)
+        {
+            Button hoveredButton = (Button)sender;
+            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
+            hoveredButton.Background = levelUpPicHover;
+        }
+
+        private void mouseDown(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_pressed.png")));
+            pressedButton.Background = levelUpPicPressed;
+        }
+
+        private void mouseUp(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
+            pressedButton.Background = levelUpPicPressed;
+        }
+
+
         private Canvas drawProgressBar(double percentXP)
         {
 
@@ -262,7 +308,7 @@ namespace LevelUp
 
             Canvas progressBarCanvas = new Canvas();
             progressBarCanvas.Height = 48;
-            progressBarCanvas.Width = 270;
+            progressBarCanvas.Width = 230;
 
             int paddingOffset = 0;
 
