@@ -147,6 +147,15 @@
     <Resource Include="Images\levelup_hover.png" />
     <Resource Include="Images\levelup_pressed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\min_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\close_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\main_background.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
