@@ -16,7 +16,7 @@
     </Window.Background>
 
 
-    <DockPanel>
+    <DockPanel Name="LevelUpWindow">
         <DockPanel Name="TitleBar" DockPanel.Dock="Top"  Height="40" >
             <Button x:Name="CloseButton" DockPanel.Dock="Right"  Click="CloseButton_Click"  Width="30" Margin="0,18,23,0">
                 <Image Source="Icons/close_Icon.png"/>
@@ -65,14 +65,19 @@
             <Label x:Name="DragLabel" DockPanel.Dock="Right"  HorizontalAlignment="Stretch" MouseDown="TitleBar_MouseDown" Width="467"/>
         </DockPanel>
 
-        <Grid HorizontalAlignment="Left" Height="593" Margin="0,10,0,0" VerticalAlignment="Top" Width="667">
+        <Grid HorizontalAlignment="Left" Height="710" Margin="0,10,0,0" VerticalAlignment="Top" Width="542">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="24*"/>
             </Grid.ColumnDefinitions>
-            <WrapPanel x:Name="skillContainer" HorizontalAlignment="Left" Height="595" Margin="10,0,0,-2" VerticalAlignment="Top" Width="647" Grid.ColumnSpan="2"/>
-            <Button x:Name="addSkillButton" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="395,600,0,-61" VerticalAlignment="Top" Width="74" Height="54" Click="addSkillButtonClick" RenderTransformOrigin="-0.432,0.565"/>
-            <Button x:Name="editButton" Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Height="59" Margin="10,595,0,-61" VerticalAlignment="Top" Width="177" Click="editButtonClick"/>
+            <WrapPanel x:Name="skillContainer" HorizontalAlignment="Left" Height="600" Margin="10,0,-128,0" VerticalAlignment="Top" Width="660" Grid.ColumnSpan="2"/>
+
+            <Canvas x:Name="RAAA" HorizontalAlignment="Left" Height="600" Margin="10,0,-128,0" VerticalAlignment="Top" Width="660" Grid.ColumnSpan="2">
+                <Button x:Name="editButton" Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Height="59" Margin="10,595,0,-61" VerticalAlignment="Top" Width="177" Click="editButtonClick"/>
+            </Canvas>
+
+
+
         </Grid>
     </DockPanel>
 </Window>

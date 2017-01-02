@@ -32,6 +32,21 @@ namespace LevelUp
             labels = new List<Label>();
             panels = new List<Canvas>();
             populate();
+
+
+            ImageBrush addSkillPic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
+            Button addSkillButton = new Button();
+            addSkillButton.Click += new RoutedEventHandler(addSkillButtonClick);
+            addSkillButton.Height = 36;
+            addSkillButton.Width = 36;
+            addSkillButton.Background = addSkillPic;
+            Canvas.SetLeft(addSkillButton, 450);
+            Canvas.SetTop(addSkillButton, 600);
+            addSkillButton.MouseEnter += new MouseEventHandler(addSkillMouseEnter);
+            addSkillButton.MouseLeave += new MouseEventHandler(addSkillMouseLeave);
+            addSkillButton.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(addSkillMouseDown);
+            addSkillButton.MouseLeftButtonUp += new MouseButtonEventHandler(addSkillMouseUp);
+            RAAA.Children.Add(addSkillButton);
         }
 
         // returns levels, remainder xp, xp to next level
@@ -314,6 +329,35 @@ namespace LevelUp
             ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
             pressedButton.Background = levelUpPicPressed;
         }
+
+        private void addSkillMouseEnter(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_hover.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseLeave(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseUp(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseDown(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_pressed.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
 
 
         private Canvas drawProgressBar(double percentXP)
