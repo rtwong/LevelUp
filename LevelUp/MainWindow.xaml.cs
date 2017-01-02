@@ -23,14 +23,14 @@ namespace LevelUp
 
         private DataManager dataManager;
         List<Label> labels;
-        List<WrapPanel> panels;
+        List<Canvas> panels;
 
         public MainWindow()
         {
             InitializeComponent();
             dataManager = new DataManager();
             labels = new List<Label>();
-            panels = new List<WrapPanel>();
+            panels = new List<Canvas>();
             populate();
         }
 
@@ -162,7 +162,7 @@ namespace LevelUp
             Tuple<double, double, double> level_and_xp = convert_to_level(skillToAdd.hours);
 
 
-            WrapPanel skillPanel = new WrapPanel();
+            Canvas skillPanel = new Canvas();
             skillPanel.Height = 58;
             skillPanel.Width = 685;
             skillPanel.Name = skillToAdd.identifier;
@@ -170,8 +170,8 @@ namespace LevelUp
 
 
             Image skillPic = new Image();
-            skillPic.Height = 48;
-            skillPic.Width = 48;
+            skillPic.Height = 36;
+            skillPic.Width = 36;
 
 
 
@@ -232,7 +232,7 @@ namespace LevelUp
             skillLabel.Content = skillToAdd.name;
             //skillLabel.AutoSize = false;
             skillLabel.Height = 48;
-            skillLabel.Width = 150;
+            skillLabel.Width = 200;
             skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
             skillLabel.FontSize = 30;
 
@@ -251,8 +251,8 @@ namespace LevelUp
             Button timeAddButton = new Button();
             timeAddButton.Click += new RoutedEventHandler(addHalfHour);
             timeAddButton.Name = skillToAdd.identifier;
-            timeAddButton.Height = 36;
-            timeAddButton.Width = 36;
+            timeAddButton.Height = 20;
+            timeAddButton.Width = 20;
             timeAddButton.Background = levelUpPic;
             timeAddButton.BorderThickness = new Thickness(0, 0, 0, 0);
             timeAddButton.MouseEnter += new MouseEventHandler(mouseEnter);
@@ -261,11 +261,28 @@ namespace LevelUp
             timeAddButton.MouseLeftButtonUp += new MouseButtonEventHandler(mouseUp);
 
 
+            Canvas.SetTop(skillPic, 3);
+            Canvas.SetLeft(skillPic, 20);
             skillPanel.Children.Add(skillPic);
+
+            Canvas.SetTop(levelLabel, 0);
+            Canvas.SetLeft(levelLabel, 60);
             skillPanel.Children.Add(levelLabel);
+
+            Canvas.SetTop(skillLabel, 0);
+            Canvas.SetLeft(skillLabel, 90);
             skillPanel.Children.Add(skillLabel);
+
+            Canvas.SetTop(progressBarCanvas, 10);
+            Canvas.SetLeft(progressBarCanvas, 290);
             skillPanel.Children.Add(progressBarCanvas);
+
+            Canvas.SetTop(timeAddButton, 10);
+            Canvas.SetLeft(timeAddButton, 490);
             skillPanel.Children.Add(timeAddButton);
+
+
+
             skillContainer.Children.Add(skillPanel);
 
         }
