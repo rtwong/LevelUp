@@ -32,6 +32,9 @@ namespace LevelUp
         /// </summary>
         private void InitializeComponent()
         {
+            this.ControlBox = true;
+
+
             this.label1 = new System.Windows.Forms.Label();
             this.skillTextBox = new System.Windows.Forms.TextBox();
             this.intellectCheckbox = new System.Windows.Forms.CheckBox();
