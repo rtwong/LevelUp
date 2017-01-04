@@ -32,9 +32,6 @@ namespace LevelUp
         /// </summary>
         private void InitializeComponent()
         {
-            this.ControlBox = true;
-
-
             this.label1 = new System.Windows.Forms.Label();
             this.skillTextBox = new System.Windows.Forms.TextBox();
             this.intellectCheckbox = new System.Windows.Forms.CheckBox();
@@ -60,10 +57,22 @@ namespace LevelUp
             // 
             // skillTextBox
             // 
+            this.skillTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.skillTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.skillTextBox.Location = new System.Drawing.Point(16, 55);
             this.skillTextBox.Name = "skillTextBox";
-            this.skillTextBox.Size = new System.Drawing.Size(271, 20);
+            this.skillTextBox.Size = new System.Drawing.Size(271, 13);
             this.skillTextBox.TabIndex = 1;
+
+            System.Drawing.Text.PrivateFontCollection modernFont = new System.Drawing.Text.PrivateFontCollection();
+
+            /*
+            //WARNING THIS IS REALLY BAD BUT IT WORKS TECHNICALLY
+            string fullPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/../../Fonts/Munro.ttf";
+            modernFont.AddFontFile(fullPath);
+            this.skillTextBox.Font = new Font(modernFont.Families[0], 30);
+            */
+
             // 
             // intellectCheckbox
             // 

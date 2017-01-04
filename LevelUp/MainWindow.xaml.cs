@@ -128,8 +128,12 @@ namespace LevelUp
             {
                 MessageBox.Show("Too many skills.");
                 return;
-            } 
+            }
+
+            System.Console.WriteLine(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName));
+
             AddSkillView dialog = new AddSkillView();
+
             dialog.ShowDialog();
 
             if (dialog.DialogResult == System.Windows.Forms.DialogResult.OK)

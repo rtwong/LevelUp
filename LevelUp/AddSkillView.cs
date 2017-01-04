@@ -86,9 +86,7 @@ namespace LevelUp
         }
 
         private void titleBarDragLabel_MouseDown(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("qweqwe");
-            
+        {            
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
