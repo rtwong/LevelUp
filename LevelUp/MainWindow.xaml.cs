@@ -132,11 +132,15 @@ namespace LevelUp
 
             System.Console.WriteLine(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName));
 
-            AddSkillView dialog = new AddSkillView();
+            //AddSkillView dialog = new AddSkillView();
+
+            //dialog.ShowDialog();
+
+            addSkillView dialog = new addSkillView();
 
             dialog.ShowDialog();
-
-            if (dialog.DialogResult == System.Windows.Forms.DialogResult.OK)
+            
+            if (dialog.DialogResult == true)
             {
 
                 List<Category> category_list = new List<Category> { };

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LevelUp
 {
-    public partial class AddSkillView : Form
+    public partial class AddSkillViewOld : Form
     {
         public string textValue { get; set; }
         public bool creativeValue { get; set; }
@@ -31,7 +31,7 @@ namespace LevelUp
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         
-        public AddSkillView()
+        public AddSkillViewOld()
         {
             InitializeComponent();
         }
@@ -86,14 +86,14 @@ namespace LevelUp
 
         private void intellectCheckPic_MouseEnter(object sender, EventArgs e)
         {
-            intellectCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+            intellectCheckPic.Image = Properties.Resources.int_icon;
         }
 
         private void intellectCheckPic_MouseLeave(object sender, EventArgs e)
         {
             if (!intellectStatus)
             {
-                intellectCheckPic.Image = Properties.Resources.checkbox_icon;
+                intellectCheckPic.Image = Properties.Resources.int_icon_grey;
             }
         }
 
@@ -104,14 +104,14 @@ namespace LevelUp
 
         private void strengthCheckPic_MouseEnter(object sender, EventArgs e)
         {
-            strengthCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+            strengthCheckPic.Image = Properties.Resources.str_icon;
         }
 
         private void strengthCheckPic_MouseLeave(object sender, EventArgs e)
         {
             if (!strengthStatus)
             {
-                strengthCheckPic.Image = Properties.Resources.checkbox_icon;
+                strengthCheckPic.Image = Properties.Resources.str_icon_grey;
             }
         }
 
@@ -122,14 +122,14 @@ namespace LevelUp
 
         private void creativeCheckPic_MouseEnter(object sender, EventArgs e)
         {
-            creativeCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+            creativeCheckPic.Image = Properties.Resources.crt_icon;
         }
 
         private void creativeCheckPic_MouseLeave(object sender, EventArgs e)
         {
             if (!creativeStatus)
             {
-                creativeCheckPic.Image = Properties.Resources.checkbox_icon;
+                creativeCheckPic.Image = Properties.Resources.crt_icon_grey;
             }
         }
     }

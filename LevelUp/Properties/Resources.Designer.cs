@@ -103,6 +103,46 @@ namespace LevelUp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crt_icon {
+            get {
+                object obj = ResourceManager.GetObject("crt_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crt_icon_grey {
+            get {
+                object obj = ResourceManager.GetObject("crt_icon_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap int_icon {
+            get {
+                object obj = ResourceManager.GetObject("int_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap int_icon_grey {
+            get {
+                object obj = ResourceManager.GetObject("int_icon_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap main_background {
             get {
                 object obj = ResourceManager.GetObject("main_background", resourceCulture);
@@ -127,6 +167,26 @@ namespace LevelUp.Properties {
             get {
                 object obj = ResourceManager.GetObject("Munro", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap str_icon {
+            get {
+                object obj = ResourceManager.GetObject("str_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap str_icon_grey {
+            get {
+                object obj = ResourceManager.GetObject("str_icon_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

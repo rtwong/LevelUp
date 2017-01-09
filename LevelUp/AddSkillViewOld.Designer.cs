@@ -1,9 +1,10 @@
 ﻿using System.Drawing;
+using System.Drawing.Text;
 
 namespace LevelUp
 {
 
-    partial class AddSkillView
+    partial class AddSkillViewOld
     {
         /// <summary>
         /// Required designer variable.
@@ -24,6 +25,8 @@ namespace LevelUp
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -32,7 +35,6 @@ namespace LevelUp
         /// </summary>
         private void InitializeComponent()
         {
-            this.BackgroundImage = global::LevelUp.Properties.Resources.addSkill_background;
             this.skillTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
@@ -59,12 +61,14 @@ namespace LevelUp
             this.skillTextBox.Location = new System.Drawing.Point(16, 55);
             this.skillTextBox.Name = "skillTextBox";
             this.skillTextBox.Size = new System.Drawing.Size(271, 13);
-            //this.skillTextBox.BackColor = System.Drawing.Color.Transparent;
             this.skillTextBox.TabIndex = 1;
-
-   
-
-
+            /*
+            System.Drawing.Text.PrivateFontCollection modernFont = new System.Drawing.Text.PrivateFontCollection();
+            string fullPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/../../Fonts/Munro.ttf";
+            System.Console.WriteLine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
+            modernFont.AddFontFile(fullPath);
+            this.skillTextBox.Font = new Font(modernFont.Families[0], 30);
+            */
 
             // 
             // cancelButton
@@ -130,14 +134,15 @@ namespace LevelUp
             this.intellectLabel.TabIndex = 9;
             this.intellectLabel.Text = "INTELLECT";
 
+
             // 
             // intellectCheckPic
             // 
             this.intellectCheckPic.BackColor = System.Drawing.Color.Transparent;
-            this.intellectCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.intellectCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.int_icon_grey;
             this.intellectCheckPic.Location = new System.Drawing.Point(12, 92);
             this.intellectCheckPic.Name = "intellectCheckPic";
-            this.intellectCheckPic.Size = new System.Drawing.Size(53, 43);
+            this.intellectCheckPic.Size = new System.Drawing.Size(48, 48);
             this.intellectCheckPic.TabIndex = 8;
             this.intellectCheckPic.TabStop = false;
             this.intellectCheckPic.Click += new System.EventHandler(this.intellectCheckPic_Click);
@@ -147,10 +152,10 @@ namespace LevelUp
             // strengthCheckPic
             // 
             this.strengthCheckPic.BackColor = System.Drawing.Color.Transparent;
-            this.strengthCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.strengthCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.str_icon_grey;
             this.strengthCheckPic.Location = new System.Drawing.Point(12, 142);
             this.strengthCheckPic.Name = "strengthCheckPic";
-            this.strengthCheckPic.Size = new System.Drawing.Size(53, 44);
+            this.strengthCheckPic.Size = new System.Drawing.Size(48, 48);
             this.strengthCheckPic.TabIndex = 10;
             this.strengthCheckPic.TabStop = false;
             this.strengthCheckPic.Click += new System.EventHandler(this.strengthCheckPic_Click);
@@ -166,14 +171,17 @@ namespace LevelUp
             this.strengthLabel.Size = new System.Drawing.Size(67, 13);
             this.strengthLabel.TabIndex = 11;
             this.strengthLabel.Text = "STRENGTH";
+            //this.strengthLabel.Font = new Font(modernFont.Families[0], 15);
+
+
             // 
             // creativeCheckPic
             // 
             this.creativeCheckPic.BackColor = System.Drawing.Color.Transparent;
-            this.creativeCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.creativeCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.crt_icon_grey;
             this.creativeCheckPic.Location = new System.Drawing.Point(12, 193);
             this.creativeCheckPic.Name = "creativeCheckPic";
-            this.creativeCheckPic.Size = new System.Drawing.Size(53, 44);
+            this.creativeCheckPic.Size = new System.Drawing.Size(48, 48);
             this.creativeCheckPic.TabIndex = 12;
             this.creativeCheckPic.TabStop = false;
             this.creativeCheckPic.Click += new System.EventHandler(this.creativeCheckPic_Click);
@@ -189,12 +197,15 @@ namespace LevelUp
             this.creativeLabel.Size = new System.Drawing.Size(60, 13);
             this.creativeLabel.TabIndex = 13;
             this.creativeLabel.Text = "CREATIVE";
+            //this.creativeLabel.Font = new Font(modernFont.Families[0], 15);
+
             // 
             // AddSkillView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.BackgroundImage = global::LevelUp.Properties.Resources.addSkill_background;
             this.ClientSize = new System.Drawing.Size(300, 335);
             this.ControlBox = false;
             this.Controls.Add(this.creativeLabel);

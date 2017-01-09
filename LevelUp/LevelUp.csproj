@@ -61,11 +61,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddSkillView.cs">
+    <Compile Include="AddSkillViewOld.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddSkillView.Designer.cs">
-      <DependentUpon>AddSkillView.cs</DependentUpon>
+    <Compile Include="AddSkillViewOld.Designer.cs">
+      <DependentUpon>AddSkillViewOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addSkillView.xaml.cs">
+      <DependentUpon>addSkillView.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditSkillsView.cs">
       <SubType>Form</SubType>
@@ -74,6 +77,10 @@
       <DependentUpon>EditSkillsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Skill.cs" />
+    <Page Include="addSkillView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,8 +109,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="AddSkillView.resx">
-      <DependentUpon>AddSkillView.cs</DependentUpon>
+    <EmbeddedResource Include="AddSkillViewOld.resx">
+      <DependentUpon>AddSkillViewOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditSkillsView.resx">
       <DependentUpon>EditSkillsView.cs</DependentUpon>
@@ -169,6 +176,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\addSkill_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\crt_icon_grey.png" />
+    <Resource Include="Icons\int_icon_grey.png" />
+    <Resource Include="Icons\str_icon_grey.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
