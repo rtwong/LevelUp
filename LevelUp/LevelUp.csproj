@@ -163,6 +163,13 @@
     <Resource Include="Images\addskill_hover.png" />
     <Resource Include="Images\addskill_pressed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\checkbox_icon.png" />
+    <Resource Include="Icons\checkbox_selected_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\addSkill_background.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

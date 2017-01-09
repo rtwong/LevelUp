@@ -32,28 +32,25 @@ namespace LevelUp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.BackgroundImage = global::LevelUp.Properties.Resources.addSkill_background;
             this.skillTextBox = new System.Windows.Forms.TextBox();
-            this.intellectCheckbox = new System.Windows.Forms.CheckBox();
-            this.strengthCheckbox = new System.Windows.Forms.CheckBox();
-            this.creativeCheckbox = new System.Windows.Forms.CheckBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.titleBarFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.titleBarDragLabel = new System.Windows.Forms.Label();
             this.titleBarClose = new System.Windows.Forms.PictureBox();
+            this.intellectLabel = new System.Windows.Forms.Label();
+            this.intellectCheckPic = new System.Windows.Forms.PictureBox();
+            this.strengthCheckPic = new System.Windows.Forms.PictureBox();
+            this.strengthLabel = new System.Windows.Forms.Label();
+            this.creativeCheckPic = new System.Windows.Forms.PictureBox();
+            this.creativeLabel = new System.Windows.Forms.Label();
             this.titleBarFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.titleBarClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intellectCheckPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.strengthCheckPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creativeCheckPic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "INPUT SKILL";
             // 
             // skillTextBox
             // 
@@ -62,85 +59,51 @@ namespace LevelUp
             this.skillTextBox.Location = new System.Drawing.Point(16, 55);
             this.skillTextBox.Name = "skillTextBox";
             this.skillTextBox.Size = new System.Drawing.Size(271, 13);
+            //this.skillTextBox.BackColor = System.Drawing.Color.Transparent;
             this.skillTextBox.TabIndex = 1;
 
-            System.Drawing.Text.PrivateFontCollection modernFont = new System.Drawing.Text.PrivateFontCollection();
+   
 
-            /*
-            //WARNING THIS IS REALLY BAD BUT IT WORKS TECHNICALLY
-            string fullPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/../../Fonts/Munro.ttf";
-            modernFont.AddFontFile(fullPath);
-            this.skillTextBox.Font = new Font(modernFont.Families[0], 30);
-            */
 
-            // 
-            // intellectCheckbox
-            // 
-            this.intellectCheckbox.AutoSize = true;
-            this.intellectCheckbox.Location = new System.Drawing.Point(16, 118);
-            this.intellectCheckbox.Name = "intellectCheckbox";
-            this.intellectCheckbox.Size = new System.Drawing.Size(84, 17);
-            this.intellectCheckbox.TabIndex = 2;
-            this.intellectCheckbox.Text = "INTELLECT";
-            this.intellectCheckbox.UseVisualStyleBackColor = true;
-            this.intellectCheckbox.CheckedChanged += new System.EventHandler(this.intellectChanged);
-            // 
-            // strengthCheckbox
-            // 
-            this.strengthCheckbox.AutoSize = true;
-            this.strengthCheckbox.Location = new System.Drawing.Point(106, 118);
-            this.strengthCheckbox.Name = "strengthCheckbox";
-            this.strengthCheckbox.Size = new System.Drawing.Size(86, 17);
-            this.strengthCheckbox.TabIndex = 3;
-            this.strengthCheckbox.Text = "STRENGTH";
-            this.strengthCheckbox.UseVisualStyleBackColor = true;
-            this.strengthCheckbox.CheckedChanged += new System.EventHandler(this.strengthChanged);
-            // 
-            // creativeCheckbox
-            // 
-            this.creativeCheckbox.AutoSize = true;
-            this.creativeCheckbox.Location = new System.Drawing.Point(198, 118);
-            this.creativeCheckbox.Name = "creativeCheckbox";
-            this.creativeCheckbox.Size = new System.Drawing.Size(79, 17);
-            this.creativeCheckbox.TabIndex = 4;
-            this.creativeCheckbox.Text = "CREATIVE";
-            this.creativeCheckbox.UseVisualStyleBackColor = true;
-            this.creativeCheckbox.CheckedChanged += new System.EventHandler(this.creativeChanged);
+
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(167, 223);
+            this.cancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.cancelButton.Location = new System.Drawing.Point(167, 274);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "CANCEL";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelClick);
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(86, 223);
+            this.okButton.BackColor = System.Drawing.Color.Transparent;
+            this.okButton.Location = new System.Drawing.Point(68, 274);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 6;
             this.okButton.Text = "ADD SKILL";
-            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.UseVisualStyleBackColor = false;
             this.okButton.Click += new System.EventHandler(this.okClick);
             // 
             // titleBarFlowLayoutPanel
             // 
+            this.titleBarFlowLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.titleBarFlowLayoutPanel.Controls.Add(this.titleBarDragLabel);
             this.titleBarFlowLayoutPanel.Controls.Add(this.titleBarClose);
             this.titleBarFlowLayoutPanel.Location = new System.Drawing.Point(2, 3);
             this.titleBarFlowLayoutPanel.Name = "titleBarFlowLayoutPanel";
-            this.titleBarFlowLayoutPanel.Size = new System.Drawing.Size(298, 46);
+            this.titleBarFlowLayoutPanel.Size = new System.Drawing.Size(298, 19);
             this.titleBarFlowLayoutPanel.TabIndex = 7;
             // 
             // titleBarDragLabel
             // 
             this.titleBarDragLabel.Location = new System.Drawing.Point(3, 0);
             this.titleBarDragLabel.Name = "titleBarDragLabel";
-            this.titleBarDragLabel.Size = new System.Drawing.Size(253, 24);
+            this.titleBarDragLabel.Size = new System.Drawing.Size(253, 19);
             this.titleBarDragLabel.TabIndex = 0;
             this.titleBarDragLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBarDragLabel_MouseDown);
             // 
@@ -157,41 +120,119 @@ namespace LevelUp
             this.titleBarClose.TabStop = false;
             this.titleBarClose.Click += new System.EventHandler(this.titleBarClose_Click);
             // 
+            // intellectLabel
+            // 
+            this.intellectLabel.AutoSize = true;
+            this.intellectLabel.BackColor = System.Drawing.Color.Transparent;
+            this.intellectLabel.Location = new System.Drawing.Point(71, 107);
+            this.intellectLabel.Name = "intellectLabel";
+            this.intellectLabel.Size = new System.Drawing.Size(65, 13);
+            this.intellectLabel.TabIndex = 9;
+            this.intellectLabel.Text = "INTELLECT";
+
+            // 
+            // intellectCheckPic
+            // 
+            this.intellectCheckPic.BackColor = System.Drawing.Color.Transparent;
+            this.intellectCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.intellectCheckPic.Location = new System.Drawing.Point(12, 92);
+            this.intellectCheckPic.Name = "intellectCheckPic";
+            this.intellectCheckPic.Size = new System.Drawing.Size(53, 43);
+            this.intellectCheckPic.TabIndex = 8;
+            this.intellectCheckPic.TabStop = false;
+            this.intellectCheckPic.Click += new System.EventHandler(this.intellectCheckPic_Click);
+            this.intellectCheckPic.MouseEnter += new System.EventHandler(this.intellectCheckPic_MouseEnter);
+            this.intellectCheckPic.MouseLeave += new System.EventHandler(this.intellectCheckPic_MouseLeave);
+            // 
+            // strengthCheckPic
+            // 
+            this.strengthCheckPic.BackColor = System.Drawing.Color.Transparent;
+            this.strengthCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.strengthCheckPic.Location = new System.Drawing.Point(12, 142);
+            this.strengthCheckPic.Name = "strengthCheckPic";
+            this.strengthCheckPic.Size = new System.Drawing.Size(53, 44);
+            this.strengthCheckPic.TabIndex = 10;
+            this.strengthCheckPic.TabStop = false;
+            this.strengthCheckPic.Click += new System.EventHandler(this.strengthCheckPic_Click);
+            this.strengthCheckPic.MouseEnter += new System.EventHandler(this.strengthCheckPic_MouseEnter);
+            this.strengthCheckPic.MouseLeave += new System.EventHandler(this.strengthCheckPic_MouseLeave);
+            // 
+            // strengthLabel
+            // 
+            this.strengthLabel.AutoSize = true;
+            this.strengthLabel.BackColor = System.Drawing.Color.Transparent;
+            this.strengthLabel.Location = new System.Drawing.Point(71, 155);
+            this.strengthLabel.Name = "strengthLabel";
+            this.strengthLabel.Size = new System.Drawing.Size(67, 13);
+            this.strengthLabel.TabIndex = 11;
+            this.strengthLabel.Text = "STRENGTH";
+            // 
+            // creativeCheckPic
+            // 
+            this.creativeCheckPic.BackColor = System.Drawing.Color.Transparent;
+            this.creativeCheckPic.BackgroundImage = global::LevelUp.Properties.Resources.checkbox_icon;
+            this.creativeCheckPic.Location = new System.Drawing.Point(12, 193);
+            this.creativeCheckPic.Name = "creativeCheckPic";
+            this.creativeCheckPic.Size = new System.Drawing.Size(53, 44);
+            this.creativeCheckPic.TabIndex = 12;
+            this.creativeCheckPic.TabStop = false;
+            this.creativeCheckPic.Click += new System.EventHandler(this.creativeCheckPic_Click);
+            this.creativeCheckPic.MouseEnter += new System.EventHandler(this.creativeCheckPic_MouseEnter);
+            this.creativeCheckPic.MouseLeave += new System.EventHandler(this.creativeCheckPic_MouseLeave);
+            // 
+            // creativeLabel
+            // 
+            this.creativeLabel.AutoSize = true;
+            this.creativeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.creativeLabel.Location = new System.Drawing.Point(74, 208);
+            this.creativeLabel.Name = "creativeLabel";
+            this.creativeLabel.Size = new System.Drawing.Size(60, 13);
+            this.creativeLabel.TabIndex = 13;
+            this.creativeLabel.Text = "CREATIVE";
+            // 
             // AddSkillView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 372);
+            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ClientSize = new System.Drawing.Size(300, 335);
             this.ControlBox = false;
+            this.Controls.Add(this.creativeLabel);
+            this.Controls.Add(this.creativeCheckPic);
+            this.Controls.Add(this.strengthLabel);
+            this.Controls.Add(this.strengthCheckPic);
+            this.Controls.Add(this.intellectLabel);
+            this.Controls.Add(this.intellectCheckPic);
             this.Controls.Add(this.titleBarFlowLayoutPanel);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.creativeCheckbox);
-            this.Controls.Add(this.strengthCheckbox);
-            this.Controls.Add(this.intellectCheckbox);
             this.Controls.Add(this.skillTextBox);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddSkillView";
             this.Text = "Add Skill";
             this.titleBarFlowLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.titleBarClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intellectCheckPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.strengthCheckPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creativeCheckPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox skillTextBox;
-        private System.Windows.Forms.CheckBox intellectCheckbox;
-        private System.Windows.Forms.CheckBox strengthCheckbox;
-        private System.Windows.Forms.CheckBox creativeCheckbox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.FlowLayoutPanel titleBarFlowLayoutPanel;
         private System.Windows.Forms.Label titleBarDragLabel;
         private System.Windows.Forms.PictureBox titleBarClose;
+        private System.Windows.Forms.PictureBox intellectCheckPic;
+        private System.Windows.Forms.Label intellectLabel;
+        private System.Windows.Forms.PictureBox strengthCheckPic;
+        private System.Windows.Forms.Label strengthLabel;
+        private System.Windows.Forms.PictureBox creativeCheckPic;
+        private System.Windows.Forms.Label creativeLabel;
     }
+
 }

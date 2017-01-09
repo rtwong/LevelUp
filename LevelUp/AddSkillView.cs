@@ -18,7 +18,10 @@ namespace LevelUp
         public bool strengthValue { get; set; }
         public bool intellectValue { get; set; }
 
-        
+        public bool intellectStatus = false;
+        public bool strengthStatus = false;
+        public bool creativeStatus = false;
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
         
@@ -33,25 +36,6 @@ namespace LevelUp
             InitializeComponent();
         }
 
-        private void creativeChanged(object sender, EventArgs e)
-        {
-            Console.Write("Creative");
-        }
-
-        private void strengthChanged(object sender, EventArgs e)
-        {
-            Console.Write("Strength");
-        }
-
-        private void intellectChanged(object sender, EventArgs e)
-        {
-            Console.Write("Intellect");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void cancelClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -62,9 +46,9 @@ namespace LevelUp
         private void okClick(object sender, EventArgs e)
         {
             textValue = skillTextBox.Text;
-            creativeValue = creativeCheckbox.Checked;
-            strengthValue = strengthCheckbox.Checked;
-            intellectValue = intellectCheckbox.Checked;
+            creativeValue = creativeStatus;
+            strengthValue = strengthStatus;
+            intellectValue = intellectStatus;
             //yourText.All(char.IsLetterOrDigit)
             if ((intellectValue || strengthValue || creativeValue) && (textValue.Replace(" ", "").Length > 0))
             {
@@ -94,6 +78,60 @@ namespace LevelUp
             }
             
         }
-        
+
+        private void intellectCheckPic_Click(object sender, EventArgs e)
+        {
+            intellectStatus = !intellectStatus;
+        }
+
+        private void intellectCheckPic_MouseEnter(object sender, EventArgs e)
+        {
+            intellectCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+        }
+
+        private void intellectCheckPic_MouseLeave(object sender, EventArgs e)
+        {
+            if (!intellectStatus)
+            {
+                intellectCheckPic.Image = Properties.Resources.checkbox_icon;
+            }
+        }
+
+        private void strengthCheckPic_Click(object sender, EventArgs e)
+        {
+            strengthStatus = !strengthStatus;
+        }
+
+        private void strengthCheckPic_MouseEnter(object sender, EventArgs e)
+        {
+            strengthCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+        }
+
+        private void strengthCheckPic_MouseLeave(object sender, EventArgs e)
+        {
+            if (!strengthStatus)
+            {
+                strengthCheckPic.Image = Properties.Resources.checkbox_icon;
+            }
+        }
+
+        private void creativeCheckPic_Click(object sender, EventArgs e)
+        {
+            creativeStatus = !creativeStatus;
+        }
+
+        private void creativeCheckPic_MouseEnter(object sender, EventArgs e)
+        {
+            creativeCheckPic.Image = Properties.Resources.checkbox_selected_icon;
+        }
+
+        private void creativeCheckPic_MouseLeave(object sender, EventArgs e)
+        {
+            if (!creativeStatus)
+            {
+                creativeCheckPic.Image = Properties.Resources.checkbox_icon;
+            }
+        }
     }
+
 }
