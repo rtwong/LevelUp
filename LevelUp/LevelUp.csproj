@@ -182,6 +182,11 @@
     <Resource Include="Icons\int_icon_grey.png" />
     <Resource Include="Icons\str_icon_grey.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\editskill_default.png" />
+    <Resource Include="Images\editskill_hover.png" />
+    <Resource Include="Images\editskill_pressed.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

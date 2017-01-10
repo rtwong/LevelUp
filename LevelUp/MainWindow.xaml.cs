@@ -46,7 +46,25 @@ namespace LevelUp
             addSkillButton.MouseLeave += new MouseEventHandler(addSkillMouseLeave);
             addSkillButton.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(addSkillMouseDown);
             addSkillButton.MouseLeftButtonUp += new MouseButtonEventHandler(addSkillMouseUp);
-            RAAA.Children.Add(addSkillButton);
+            buttonCanvas.Children.Add(addSkillButton);
+
+            
+            ImageBrush editSkillPic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_default.png")));
+            Button editSkillButton = new Button();
+            editSkillButton.Click += new RoutedEventHandler(editButtonClick);
+            editSkillButton.Height = 36;
+            editSkillButton.Width = 36;
+            editSkillButton.Background = editSkillPic;
+            Canvas.SetLeft(editSkillButton, 400);
+            Canvas.SetTop(editSkillButton, 600);
+            editSkillButton.MouseEnter += new MouseEventHandler(editMouseEnter);
+            editSkillButton.MouseLeave += new MouseEventHandler(editMouseLeave);
+            editSkillButton.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(editMouseDown);
+            editSkillButton.MouseLeftButtonUp += new MouseButtonEventHandler(editMouseUp);
+            buttonCanvas.Children.Add(editSkillButton);
+            
+
+
         }
 
         // returns levels, remainder xp, xp to next level
@@ -122,52 +140,6 @@ namespace LevelUp
 
         }
 
-        private void addSkillButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (dataManager.data.Count >= 10)
-            {
-                MessageBox.Show("Too many skills.");
-                return;
-            }
-
-            System.Console.WriteLine(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName));
-
-            //AddSkillView dialog = new AddSkillView();
-
-            //dialog.ShowDialog();
-
-            addSkillView dialog = new addSkillView();
-
-            dialog.ShowDialog();
-            
-            if (dialog.DialogResult == true)
-            {
-
-                List<Category> category_list = new List<Category> { };
-
-                if (dialog.creativeValue)
-                {
-                    category_list.Add(Category.CRT);
-                }
-                if (dialog.strengthValue)
-                {
-                    category_list.Add(Category.STR);
-                }
-                if (dialog.intellectValue)
-                {
-                    category_list.Add(Category.INT);
-                }
-
-
-                dataManager.add_data(dialog.textValue, 0, category_list);
-                populate();
-            }
-            else
-            {
-                Console.Write("Cancel clicked");
-            }
-        }
-
         private void populate()
         {
             skillContainer.Children.Clear();
@@ -177,8 +149,6 @@ namespace LevelUp
                 addSkillToView(entry);
             }
         }
-
-
 
         private void addSkillToView(Skill skillToAdd)
         {
@@ -310,64 +280,6 @@ namespace LevelUp
 
         }
 
-        private void mouseEnter(object sender, MouseEventArgs e)
-        {
-            Button hoveredButton = (Button)sender;
-            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_hover.png")));
-            hoveredButton.Background = levelUpPicHover;
-        }
-
-        private void mouseLeave(object sender, MouseEventArgs e)
-        {
-            Button hoveredButton = (Button)sender;
-            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
-            hoveredButton.Background = levelUpPicHover;
-        }
-
-        private void mouseDown(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_pressed.png")));
-            pressedButton.Background = levelUpPicPressed;
-        }
-
-        private void mouseUp(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
-            pressedButton.Background = levelUpPicPressed;
-        }
-
-        private void addSkillMouseEnter(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_hover.png")));
-            pressedButton.Background = addSkillPicPressed;
-        }
-
-        private void addSkillMouseLeave(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
-            pressedButton.Background = addSkillPicPressed;
-        }
-
-        private void addSkillMouseUp(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
-            pressedButton.Background = addSkillPicPressed;
-        }
-
-        private void addSkillMouseDown(object sender, MouseEventArgs e)
-        {
-            Button pressedButton = (Button)sender;
-            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_pressed.png")));
-            pressedButton.Background = addSkillPicPressed;
-        }
-
-
-
         private Canvas drawProgressBar(double percentXP)
         {
 
@@ -393,7 +305,7 @@ namespace LevelUp
             }
 
             paddingOffset = 0;
-            for (int i = 0; i < filled-1; i++)
+            for (int i = 0; i < filled - 1; i++)
             {
                 Image foregroundPic = new Image();
                 foregroundPic.Height = 20;
@@ -408,14 +320,14 @@ namespace LevelUp
             fullImage.BaseUri = BaseUriHelper.GetBaseUri(this);
 
 
-            
-            double remainderPixels = Math.Round((remainder /10) * 15);
+
+            double remainderPixels = Math.Round((remainder / 10) * 15);
 
             if (remainderPixels == 0)
             {
                 return progressBarCanvas;
             }
-            var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, (int) remainderPixels, 20));
+            var croppedImage = new CroppedBitmap(fullImage, new Int32Rect(0, 0, (int)remainderPixels, 20));
 
             Image progressBarPic = new Image();
             progressBarPic.Height = 20;
@@ -449,6 +361,84 @@ namespace LevelUp
             return ((remainder_xp) / (xp_to_next_level + remainder_xp)) * 100;
         }
 
+
+
+        private void addSkillButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (dataManager.data.Count >= 10)
+            {
+                MessageBox.Show("Too many skills.");
+                return;
+            }
+
+            System.Console.WriteLine(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName));
+
+            //AddSkillView dialog = new AddSkillView();
+
+            //dialog.ShowDialog();
+
+            addSkillView dialog = new addSkillView();
+
+            dialog.ShowDialog();
+
+            if (dialog.DialogResult == true)
+            {
+
+                List<Category> category_list = new List<Category> { };
+
+                if (dialog.creativeValue)
+                {
+                    category_list.Add(Category.CRT);
+                }
+                if (dialog.strengthValue)
+                {
+                    category_list.Add(Category.STR);
+                }
+                if (dialog.intellectValue)
+                {
+                    category_list.Add(Category.INT);
+                }
+
+
+                dataManager.add_data(dialog.textValue, 0, category_list);
+                populate();
+            }
+            else
+            {
+                Console.Write("Cancel clicked");
+            }
+        }
+
+        private void addSkillMouseEnter(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_hover.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseLeave(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseUp(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_default.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+        private void addSkillMouseDown(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush addSkillPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/addskill_pressed.png")));
+            pressedButton.Background = addSkillPicPressed;
+        }
+
+
+
         private void editButtonClick(object sender, RoutedEventArgs e)
         {
             EditSkillsView dialog = new EditSkillsView();
@@ -457,8 +447,67 @@ namespace LevelUp
             //ONLY WORKS WHEN YOU CLICK APPLY
             dataManager.fetch();
             populate();
-            
+
         }
+
+        private void editMouseEnter(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush editPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_hover.png")));
+            pressedButton.Background = editPicPressed;
+        }
+
+        private void editMouseLeave(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush editPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_default.png")));
+            pressedButton.Background = editPicPressed;
+        }
+
+        private void editMouseUp(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush editPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_default.png")));
+            pressedButton.Background = editPicPressed;
+        }
+
+        private void editMouseDown(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush editPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_pressed.png")));
+            pressedButton.Background = editPicPressed;
+        }
+
+
+        private void mouseEnter(object sender, MouseEventArgs e)
+        {
+            Button hoveredButton = (Button)sender;
+            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_hover.png")));
+            hoveredButton.Background = levelUpPicHover;
+        }
+
+        private void mouseLeave(object sender, MouseEventArgs e)
+        {
+            Button hoveredButton = (Button)sender;
+            ImageBrush levelUpPicHover = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
+            hoveredButton.Background = levelUpPicHover;
+        }
+
+        private void mouseDown(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_pressed.png")));
+            pressedButton.Background = levelUpPicPressed;
+        }
+
+        private void mouseUp(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            ImageBrush levelUpPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/levelup_default.png")));
+            pressedButton.Background = levelUpPicPressed;
+        }
+
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
