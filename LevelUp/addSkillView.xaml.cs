@@ -27,6 +27,9 @@ namespace LevelUp
         public bool intellectStatus = false;
         public bool strengthStatus = false;
         public bool creativeStatus = false;
+        Button intelligenceLabelButton;
+        Button strengthLabelButton;
+        Button creativeLabelButton;
 
         public addSkillView()
         {
@@ -39,15 +42,17 @@ namespace LevelUp
             intelligenceButton.Height = 48;
             intelligenceButton.Width = 48;
             intelligenceButton.Background = intelligencePic;
+            Canvas.SetTop(intelligenceButton, 10);
 
-            Button intelligenceLabelButton = new Button();
+            intelligenceLabelButton = new Button();
             intelligenceLabelButton.Content = "Intelligence";
             intelligenceLabelButton.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            intelligenceLabelButton.FontSize = 30;
+            intelligenceLabelButton.FontSize = 26;
             intelligenceLabelButton.Click += new RoutedEventHandler(intelligenceClick);
             intelligenceLabelButton.MouseEnter += new MouseEventHandler(intelligenceMouseEnter);
             intelligenceLabelButton.MouseLeave += new MouseEventHandler(intelligenceMouseLeave);
-            Canvas.SetLeft(intelligenceLabelButton, 50);
+            Canvas.SetLeft(intelligenceLabelButton, 54);
+            Canvas.SetTop(intelligenceLabelButton, 17);
 
 
             ImageBrush strengthPic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/str_icon_grey.png")));
@@ -58,17 +63,17 @@ namespace LevelUp
             strengthButton.Height = 48;
             strengthButton.Width = 48;
             strengthButton.Background = strengthPic;
-            Canvas.SetTop(strengthButton, 50);
+            Canvas.SetTop(strengthButton, 65);
 
-            Button strengthLabelButton = new Button();
+            strengthLabelButton = new Button();
             strengthLabelButton.Content = "Strength";
             strengthLabelButton.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            strengthLabelButton.FontSize = 30;
+            strengthLabelButton.FontSize = 26;
             strengthLabelButton.Click += new RoutedEventHandler(strengthClick);
             strengthLabelButton.MouseEnter += new MouseEventHandler(strengthMouseEnter);
             strengthLabelButton.MouseLeave += new MouseEventHandler(strengthMouseLeave);
-            Canvas.SetLeft(strengthLabelButton, 50);
-            Canvas.SetTop(strengthLabelButton, 50);
+            Canvas.SetLeft(strengthLabelButton, 54);
+            Canvas.SetTop(strengthLabelButton, 72);
 
             ImageBrush creativePic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/crt_icon_grey.png")));
             Button creativeButton = new Button();
@@ -78,17 +83,17 @@ namespace LevelUp
             creativeButton.Height = 48;
             creativeButton.Width = 48;
             creativeButton.Background = creativePic;
-            Canvas.SetTop(creativeButton, 100);
+            Canvas.SetTop(creativeButton, 120);
 
-            Button creativeLabelButton = new Button();
+            creativeLabelButton = new Button();
             creativeLabelButton.Content = "Creative";
             creativeLabelButton.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            creativeLabelButton.FontSize = 30;
+            creativeLabelButton.FontSize = 26;
             creativeLabelButton.Click += new RoutedEventHandler(creativeClick);
             creativeLabelButton.MouseEnter += new MouseEventHandler(creativeMouseEnter);
             creativeLabelButton.MouseLeave += new MouseEventHandler(creativeMouseLeave);
-            Canvas.SetLeft(creativeLabelButton, 50);
-            Canvas.SetTop(creativeLabelButton, 100);
+            Canvas.SetLeft(creativeLabelButton, 54);
+            Canvas.SetTop(creativeLabelButton, 127);
 
 
             checkboxCanvas.Children.Add(intelligenceButton);
@@ -115,6 +120,7 @@ namespace LevelUp
             Button enteredButton = (Button) checkboxCanvas.Children[0];
             ImageBrush colouredIntelligence = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/int_icon.png")));
             enteredButton.Background = colouredIntelligence;
+            intelligenceLabelButton.Foreground = new SolidColorBrush(Color.FromRgb(112, 146, 190));
         }
 
         private void intelligenceMouseLeave(object sender, EventArgs e)
@@ -124,6 +130,8 @@ namespace LevelUp
                 Button enteredButton = (Button)checkboxCanvas.Children[0];
                 ImageBrush greyscaleIntelligence = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/int_icon_grey.png")));
                 enteredButton.Background = greyscaleIntelligence;
+                intelligenceLabelButton.Foreground = new SolidColorBrush(Colors.Black);
+
             }
         }
 
@@ -137,6 +145,7 @@ namespace LevelUp
             Button enteredButton = (Button)checkboxCanvas.Children[2];
             ImageBrush colouredstrength = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/str_icon.png")));
             enteredButton.Background = colouredstrength;
+            strengthLabelButton.Foreground = new SolidColorBrush(Color.FromRgb(137, 27, 27));
         }
 
         private void strengthMouseLeave(object sender, EventArgs e)
@@ -146,6 +155,8 @@ namespace LevelUp
                 Button enteredButton = (Button)checkboxCanvas.Children[2];
                 ImageBrush greyscalestrength = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/str_icon_grey.png")));
                 enteredButton.Background = greyscalestrength;
+                strengthLabelButton.Foreground = new SolidColorBrush(Colors.Black);
+
             }
         }
 
@@ -159,6 +170,7 @@ namespace LevelUp
             Button enteredButton = (Button)checkboxCanvas.Children[4];
             ImageBrush colouredcreative = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/crt_icon.png")));
             enteredButton.Background = colouredcreative;
+            creativeLabelButton.Foreground = new SolidColorBrush(Color.FromRgb(0, 64, 0));
         }
 
         private void creativeMouseLeave(object sender, EventArgs e)
@@ -168,6 +180,8 @@ namespace LevelUp
                 Button enteredButton = (Button)checkboxCanvas.Children[4]; ;
                 ImageBrush greyscalecreative = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/crt_icon_grey.png")));
                 enteredButton.Background = greyscalecreative;
+                creativeLabelButton.Foreground = new SolidColorBrush(Colors.Black);
+
             }
         }
 

@@ -16,7 +16,7 @@
     <Grid>
         <DockPanel x:Name="addSkillTitleDock" HorizontalAlignment="Left" Height="32" LastChildFill="False" VerticalAlignment="Top" Width="300">
             <Label x:Name="addSkillDragLabel" Content=""  MouseDown="addSkillTitleBar_MouseDown" Height="33" VerticalAlignment="Top" Width="251"/>
-            <Button x:Name="addSkillCloseButton" Click="addSkillCloseButton_Click"  Height="23" VerticalAlignment="Top" Width="31" Margin="6,8,0,0">
+            <Button x:Name="addSkillCloseButton" Click="addSkillCloseButton_Click"  Height="23" VerticalAlignment="Top" Width="31" Margin="6,7,0,0">
                 <Image Source="Icons/close_Icon.png" RenderTransformOrigin="0.78,0.242"/>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -39,13 +39,12 @@
                 </Button.Style>
             </Button>
         </DockPanel>
-        <TextBox x:Name="addSkillTextBox" HorizontalAlignment="Left" Height="24" Margin="16,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333" Background="#FFFFD4A0"/>
-        <Button x:Name="addSkillButton" Content="Add Skill" HorizontalAlignment="Left" Margin="57,297,0,0" VerticalAlignment="Top" Width="75" Click="addSkillButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333"/>
-        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="154,297,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.378,0.188" Click="cancelButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333"/>
-        <Button x:Name="intelligenceButton"  HorizontalAlignment="Left" Margin="23,89,0,0" VerticalAlignment="Top" Width="48" Height="48" />
-        <Canvas x:Name="checkboxCanvas" HorizontalAlignment="Left" Height="171" Margin="23,126,0,0" VerticalAlignment="Top" Width="241">
+        <TextBox x:Name="addSkillTextBox" HorizontalAlignment="Left" Margin="23,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="252" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333" Background="#FFFFD4A0" MaxLength="13"/>
+        <Button x:Name="addSkillButton" Content="Add Skill" HorizontalAlignment="Left" Margin="57,280,0,0" VerticalAlignment="Top" Width="75" Click="addSkillButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333" Style="{StaticResource AddSkillButtonStyle}"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="175,280,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.378,0.188" Click="cancelButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21.333" Style="{StaticResource CancelButtonStyle}"/>
+        <Canvas x:Name="checkboxCanvas" HorizontalAlignment="Left" Height="196" Margin="23,101,0,0" VerticalAlignment="Top" Width="241">
         </Canvas>
-        <Label x:Name="addSkillTextBoxLabel" Content="Enter Skill Name" HorizontalAlignment="Left" Margin="16,60,0,0" VerticalAlignment="Top" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="24"/>
+        <Label x:Name="addSkillTextBoxLabel" Content="Enter Skill Name" HorizontalAlignment="Left" Margin="18,25,0,0" VerticalAlignment="Top" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="30"/>
 
     </Grid>
 </Window>

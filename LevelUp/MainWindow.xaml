@@ -18,7 +18,7 @@
 
     <DockPanel Name="LevelUpWindow">
         <DockPanel Name="TitleBar" DockPanel.Dock="Top"  Height="40" >
-            <Button x:Name="CloseButton" DockPanel.Dock="Right"  Click="CloseButton_Click"  Width="30" Margin="0,18,23,0">
+            <Button x:Name="CloseButton" DockPanel.Dock="Right"  Click="CloseButton_Click"  Width="30" Margin="0,17,23,0">
                 <Image Source="Icons/close_Icon.png"/>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

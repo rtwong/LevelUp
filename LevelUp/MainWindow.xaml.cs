@@ -67,6 +67,19 @@ namespace LevelUp
 
         }
 
+
+        private void populate()
+        {
+            skillContainer.Children.Clear();
+
+            foreach (Skill entry in dataManager.data)
+            {
+                addSkillToView(entry);
+            }
+        }
+
+    
+
         // returns levels, remainder xp, xp to next level
         private Tuple<double, double, double> convert_to_level(double hours)
         {
@@ -140,15 +153,12 @@ namespace LevelUp
 
         }
 
-        private void populate()
+        private double progressBarPercent(double remainder_xp, double xp_to_next_level)
         {
-            skillContainer.Children.Clear();
-
-            foreach (Skill entry in dataManager.data)
-            {
-                addSkillToView(entry);
-            }
+            return ((remainder_xp) / (xp_to_next_level + remainder_xp)) * 100;
         }
+
+
 
         private void addSkillToView(Skill skillToAdd)
         {
@@ -356,10 +366,6 @@ namespace LevelUp
             populate();
         }
 
-        private double progressBarPercent(double remainder_xp, double xp_to_next_level)
-        {
-            return ((remainder_xp) / (xp_to_next_level + remainder_xp)) * 100;
-        }
 
 
 
@@ -477,6 +483,7 @@ namespace LevelUp
             ImageBrush editPicPressed = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/editskill_pressed.png")));
             pressedButton.Background = editPicPressed;
         }
+
 
 
         private void mouseEnter(object sender, MouseEventArgs e)
