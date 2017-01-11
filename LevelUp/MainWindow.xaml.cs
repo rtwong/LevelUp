@@ -447,7 +447,7 @@ namespace LevelUp
 
         private void editButtonClick(object sender, RoutedEventArgs e)
         {
-            EditSkillsView dialog = new EditSkillsView();
+            editSkillsView dialog = new editSkillsView();
             dialog.ShowDialog();
 
             //ONLY WORKS WHEN YOU CLICK APPLY

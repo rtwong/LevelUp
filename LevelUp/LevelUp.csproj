@@ -70,14 +70,21 @@
     <Compile Include="addSkillView.xaml.cs">
       <DependentUpon>addSkillView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditSkillsView.cs">
+    <Compile Include="editSkillsView.xaml.cs">
+      <DependentUpon>editSkillsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditSkillsViewOld.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditSkillsView.Designer.cs">
-      <DependentUpon>EditSkillsView.cs</DependentUpon>
+    <Compile Include="EditSkillsViewOld.Designer.cs">
+      <DependentUpon>EditSkillsViewOld.cs</DependentUpon>
     </Compile>
     <Compile Include="Skill.cs" />
     <Page Include="addSkillView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="editSkillsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,8 +119,8 @@
     <EmbeddedResource Include="AddSkillViewOld.resx">
       <DependentUpon>AddSkillViewOld.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditSkillsView.resx">
-      <DependentUpon>EditSkillsView.cs</DependentUpon>
+    <EmbeddedResource Include="EditSkillsViewOld.resx">
+      <DependentUpon>EditSkillsViewOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

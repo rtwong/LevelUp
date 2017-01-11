@@ -1,6 +1,6 @@
 ﻿namespace LevelUp
 {
-    partial class EditSkillsView
+    partial class EditSkillsViewOld
     {
         /// <summary>
         /// Required designer variable.

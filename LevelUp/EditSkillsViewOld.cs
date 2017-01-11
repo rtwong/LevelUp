@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace LevelUp
 {
-    public partial class EditSkillsView : Form
+    public partial class EditSkillsViewOld : Form
     {
         DataManager dataManager;
         List<String> skillsToDelete;
 
-        public EditSkillsView()
+        public EditSkillsViewOld()
         {
             InitializeComponent();
 
