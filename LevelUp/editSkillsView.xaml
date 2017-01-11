@@ -41,8 +41,8 @@
             </Button>
         </DockPanel>
         <Canvas x:Name="editSkillsContainerCanvas" HorizontalAlignment="Left" Height="357" Margin="10,39,0,0" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="applyButton" Content="APPLY" HorizontalAlignment="Left" Margin="60,446,0,0" VerticalAlignment="Top" Width="75" Click="applyButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21"/>
-        <Button x:Name="cancelButton" Content="CANCEL" HorizontalAlignment="Left" Margin="135,446,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.25,-0.269" Click="cancelButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21"/>
+        <Button x:Name="applyButton" Content="APPLY" HorizontalAlignment="Left" Margin="60,446,0,0" VerticalAlignment="Top" Width="75" Click="applyButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21" Style="{StaticResource AddSkillButtonStyle}"/>
+        <Button x:Name="cancelButton" Content="CANCEL" HorizontalAlignment="Left" Margin="135,446,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.25,-0.269" Click="cancelButton_Click" FontFamily="/LevelUp;component/Fonts/#Munro" FontSize="21" Style="{StaticResource CancelButtonStyle}"/>
 
     </Grid>
 </Window>
