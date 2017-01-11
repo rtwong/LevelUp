@@ -15,9 +15,9 @@
         <ImageBrush ImageSource="Images/main_background.png"></ImageBrush>
     </Window.Background>
     <Grid Margin="10,10,53,10">
-        <DockPanel x:Name="editSkillTitleDockPanel" Height="34" LastChildFill="False" VerticalAlignment="Top" Margin="0,0,-41,0">
-            <Label x:Name="editSkillsDragLabel" Content="" Height="20" VerticalAlignment="Top" Width="227" MouseDown="editSkillsTitleBar_MouseDown"/>
-            <Button x:Name="editSkillsCloseButton"  Height="34" VerticalAlignment="Top" Width="22" Click="editSkillsCloseButton_Click" RenderTransformOrigin="0.417,0.653">
+        <DockPanel x:Name="editSkillTitleDockPanel" Height="43" LastChildFill="False" VerticalAlignment="Top" Margin="-6,-9,-51,0">
+            <Label x:Name="editSkillsDragLabel" Content="" Height="33" VerticalAlignment="Top" Width="235" MouseDown="editSkillsTitleBar_MouseDown"/>
+            <Button x:Name="editSkillsCloseButton"  Height="21" VerticalAlignment="Top" Width="25" Margin="0,9,0,0" Click="editSkillsCloseButton_Click" RenderTransformOrigin="0.417,0.653">
                 <Image Source="Icons/close_Icon.png" RenderTransformOrigin="0.78,0.242" Width="27" Height="22"/>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
