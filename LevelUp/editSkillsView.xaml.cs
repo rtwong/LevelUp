@@ -75,7 +75,25 @@ namespace LevelUp
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             Button senderButton = (Button)sender;
-            skillsToDelete.Add(senderButton.Tag.ToString());
+            String deleteTag = senderButton.Tag.ToString();
+
+            WrapPanel wp = (WrapPanel)(VisualTreeHelper.GetParent(senderButton) as UIElement);
+            List<TextBox> textBoxList = wp.Children.OfType<TextBox>().ToList();
+            TextBox textBox = textBoxList[0];
+
+            if (skillsToDelete.Contains<String>(deleteTag))
+            {
+                skillsToDelete.Remove(deleteTag);
+
+                textBox.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+
+            }
+            else
+            {
+                skillsToDelete.Add(deleteTag);
+
+                textBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            }
         }
 
         private void applyButton_Click(object sender, RoutedEventArgs e)
