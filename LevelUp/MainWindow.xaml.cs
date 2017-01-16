@@ -383,6 +383,7 @@ namespace LevelUp
             //dialog.ShowDialog();
 
             addSkillView dialog = new addSkillView();
+            dialog.Owner = this;
 
             dialog.ShowDialog();
 
@@ -447,6 +448,7 @@ namespace LevelUp
         private void editButtonClick(object sender, RoutedEventArgs e)
         {
             editSkillsView dialog = new editSkillsView();
+            dialog.Owner = this;
             dialog.ShowDialog();
 
             //ONLY WORKS WHEN YOU CLICK APPLY
