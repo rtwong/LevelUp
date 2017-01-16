@@ -43,30 +43,55 @@ namespace LevelUp
 
         private void populateSkill(Skill skill, int offset)
         {
-            WrapPanel skillContainer = new WrapPanel();
+            Canvas skillContainer = new Canvas();
             skillContainer.Tag = skill.identifier;
             Canvas.SetTop(skillContainer, offset);
 
+
             TextBox skillName = new TextBox();
+            Canvas.SetLeft(skillName, 8);
             skillName.Text = skill.name;
-            skillName.Height = 28;
+            skillName.Height = 34;
             skillName.Width = 180;
             skillName.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
             skillName.FontSize = 21;
-            skillName.MaxLength = 13;
+            skillName.MaxLength = 12;
             skillName.Background = new SolidColorBrush(Color.FromRgb(255,212,160));
+            skillName.Visibility = System.Windows.Visibility.Hidden;
+            skillName.MouseLeave += new MouseEventHandler(skillTextBoxMouseLeave);
+            skillName.Padding = new Thickness(2, 4, 0, 0);
 
-            ImageBrush deletePic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/all_icon.png")));
+
+
+            Label skillLabel = new Label();
+            Canvas.SetLeft(skillLabel, 8);
+            skillLabel.Content = skill.name;
+            skillLabel.Height = 33;
+            skillLabel.Width = 180;
+            skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
+            skillLabel.FontSize = 21;
+            skillLabel.MouseEnter += new MouseEventHandler(skillLabelMouseEnter);
+            skillLabel.MouseLeave += new MouseEventHandler(skillLabelMouseLeave);
+            skillLabel.Tag = skill.identifier;
+            //skillLabel.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+
+
+
+            ImageBrush deletePic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/delete_icon.png")));
             Button deleteButton = new Button();
+            Canvas.SetLeft(deleteButton, 200);
             deleteButton.Background = deletePic;
-            deleteButton.Height = 15;
-            deleteButton.Width = 15;
-            //deleteButton.Content = "       ";
+            deleteButton.Height = 25;
+            deleteButton.Width = 25;
             deleteButton.Tag = skill.identifier;
             deleteButton.Click += new RoutedEventHandler(deleteButton_Click);
+            deleteButton.MouseEnter += new MouseEventHandler(deleteMouseEnter);
+            deleteButton.MouseLeave += new MouseEventHandler(deleteMouseLeave);
 
 
+            skillContainer.Children.Add(skillLabel);
             skillContainer.Children.Add(skillName);
+
             skillContainer.Children.Add(deleteButton);
 
             editSkillsContainerCanvas.Children.Add(skillContainer);
@@ -77,29 +102,92 @@ namespace LevelUp
             Button senderButton = (Button)sender;
             String deleteTag = senderButton.Tag.ToString();
 
-            WrapPanel wp = (WrapPanel)(VisualTreeHelper.GetParent(senderButton) as UIElement);
+            Canvas wp = (Canvas)(VisualTreeHelper.GetParent(senderButton) as UIElement);
             List<TextBox> textBoxList = wp.Children.OfType<TextBox>().ToList();
             TextBox textBox = textBoxList[0];
+
+            List<Label> labelList = wp.Children.OfType<Label>().ToList();
+            Label label = labelList[0];
 
             if (skillsToDelete.Contains<String>(deleteTag))
             {
                 skillsToDelete.Remove(deleteTag);
 
                 textBox.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                label.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
 
             }
             else
             {
                 skillsToDelete.Add(deleteTag);
-
                 textBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                label.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+
             }
         }
+
+        private void deleteMouseEnter(object sender, EventArgs e)
+        {
+            Button enteredButton = (Button)sender;
+            enteredButton.Height = 27;
+            enteredButton.Width = 27;
+        }
+
+
+        private void deleteMouseLeave(object sender, EventArgs e)
+        {
+            if (true)
+            {
+                Button enteredButton = (Button)sender;
+                enteredButton.Height = 25;
+                enteredButton.Width = 25;
+            }
+        }
+
+        private void skillTextBoxMouseLeave(object sender, EventArgs e)
+        {
+            TextBox enteredTextBox = (TextBox)sender;
+
+            Canvas wp = (Canvas)(VisualTreeHelper.GetParent(enteredTextBox) as UIElement);
+            List<Label> LabelList = wp.Children.OfType<Label>().ToList();
+
+            Label textLabel = LabelList[0];
+            textLabel.Content = enteredTextBox.Text;
+
+            enteredTextBox.Visibility = Visibility.Hidden;
+
+
+        }
+
+        private void skillLabelMouseEnter(object sender, EventArgs e)
+        {
+            Label enteredLabel = (Label)sender;
+
+            Canvas wp = (Canvas)(VisualTreeHelper.GetParent(enteredLabel) as UIElement);
+            List<TextBox> textBoxList = wp.Children.OfType<TextBox>().ToList();
+            TextBox textBox = textBoxList[0];
+            textBox.Visibility = Visibility.Visible;
+
+        }
+
+        private void skillLabelMouseLeave(object sender, EventArgs e)
+        {
+            
+            Label enteredLabel = (Label)sender;
+
+            Canvas wp = (Canvas)(VisualTreeHelper.GetParent(enteredLabel) as UIElement);
+            List<TextBox> textBoxList = wp.Children.OfType<TextBox>().ToList();
+            TextBox textBox = textBoxList[0];
+            //textBox.Visibility = Visibility.Hidden;
+            
+
+        }
+
 
         private void applyButton_Click(object sender, RoutedEventArgs e)
         {
             
-            foreach (WrapPanel skillContainer in editSkillsContainerCanvas.Children.OfType<WrapPanel>())
+            foreach (Canvas skillContainer in editSkillsContainerCanvas.Children.OfType<Canvas>())
             {
                 List<TextBox> textBoxList = skillContainer.Children.OfType<TextBox>().ToList();
                 TextBox textBox = textBoxList[0];

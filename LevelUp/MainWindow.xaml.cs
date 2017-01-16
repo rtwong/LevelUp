@@ -130,11 +130,10 @@ namespace LevelUp
 
             }
 
-            if (xp == 300000)
+            if (xp >= 300000)
             {
                 current_level += 1;
-                xp -= 300000;
-                remainder_xp = 0;
+                remainder_xp = 1;
                 xp_to_next_level = 0;
 
             }
@@ -147,7 +146,7 @@ namespace LevelUp
             }
 
 
-            // TODO: apply exp curve to convert into a level, and remainder_xp
+
             return Tuple.Create(current_level, remainder_xp, xp_to_next_level);
 
 
@@ -273,7 +272,7 @@ namespace LevelUp
             skillPanel.Children.Add(levelLabel);
 
             Canvas.SetTop(skillLabel, 0);
-            Canvas.SetLeft(skillLabel, 90);
+            Canvas.SetLeft(skillLabel, 100);
             skillPanel.Children.Add(skillLabel);
 
             Canvas.SetTop(progressBarCanvas, 10);
@@ -315,7 +314,7 @@ namespace LevelUp
             }
 
             paddingOffset = 0;
-            for (int i = 0; i < filled - 1; i++)
+            for (int i = 0; i < filled ; i++)
             {
                 Image foregroundPic = new Image();
                 foregroundPic.Height = 20;
