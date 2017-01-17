@@ -70,6 +70,12 @@
     <Compile Include="addSkillView.xaml.cs">
       <DependentUpon>addSkillView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CategoryPopup.xaml.cs">
+      <DependentUpon>CategoryPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DuplicateEmptyPopup.xaml.cs">
+      <DependentUpon>DuplicateEmptyPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="editSkillsView.xaml.cs">
       <DependentUpon>editSkillsView.xaml</DependentUpon>
     </Compile>
@@ -80,7 +86,18 @@
       <DependentUpon>EditSkillsViewOld.cs</DependentUpon>
     </Compile>
     <Compile Include="Skill.cs" />
+    <Compile Include="TooManySkillsPopup.xaml.cs">
+      <DependentUpon>TooManySkillsPopup.xaml</DependentUpon>
+    </Compile>
     <Page Include="addSkillView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CategoryPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DuplicateEmptyPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TooManySkillsPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -236,7 +236,7 @@ namespace LevelUp
             skillLabel.Height = 48;
             skillLabel.Width = 200;
             skillLabel.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "/Fonts/#Munro");
-            skillLabel.FontSize = 30;
+            skillLabel.FontSize = 26;
 
             Canvas progressBarCanvas = drawProgressBar(progressBarPercent(level_and_xp.Item2, level_and_xp.Item3));
 
@@ -372,7 +372,9 @@ namespace LevelUp
         {
             if (dataManager.data.Count >= 10)
             {
-                MessageBox.Show("Too many skills.");
+                TooManySkillsPopup popup = new TooManySkillsPopup();
+                popup.Owner = this;
+                popup.Show();
                 return;
             }
 

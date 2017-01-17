@@ -31,9 +31,14 @@ namespace LevelUp
         Button strengthLabelButton;
         Button creativeLabelButton;
 
+        DataManager dataManager;
+
         public addSkillView()
         {
             InitializeComponent();
+
+            dataManager = new DataManager();
+
             ImageBrush intelligencePic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/int_icon_grey.png")));
             Button intelligenceButton = new Button();
             intelligenceButton.Click += new RoutedEventHandler(intelligenceClick);
@@ -53,7 +58,6 @@ namespace LevelUp
             intelligenceLabelButton.MouseLeave += new MouseEventHandler(intelligenceMouseLeave);
             Canvas.SetLeft(intelligenceLabelButton, 54);
             Canvas.SetTop(intelligenceLabelButton, 17);
-
 
             ImageBrush strengthPic = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Icons/str_icon_grey.png")));
             Button strengthButton = new Button();
@@ -106,7 +110,7 @@ namespace LevelUp
             checkboxCanvas.Children.Add(creativeButton);
             checkboxCanvas.Children.Add(creativeLabelButton);
 
-
+            
         }
 
 
@@ -191,7 +195,19 @@ namespace LevelUp
             creativeValue = creativeStatus;
             strengthValue = strengthStatus;
             intellectValue = intellectStatus;
-            if ((intellectValue || strengthValue || creativeValue) && (textValue.Replace(" ", "").Length > 0))
+            
+            foreach (Skill skill in dataManager.data)
+            {
+                if ((skill.name == textValue || (textValue.Replace(" ", "").Length <= 0)))
+                {
+                    DuplicateEmptyPopup duplicateEmptyPopup = new DuplicateEmptyPopup();
+                    duplicateEmptyPopup.Owner = this;
+                    duplicateEmptyPopup.Show();
+                    return;
+                }
+            }
+            
+            if (intellectValue || strengthValue || creativeValue)
             {
                 DialogResult = true;
 
@@ -199,7 +215,9 @@ namespace LevelUp
             }
             else
             {
-                MessageBox.Show("Invalid input.");
+                CategoryPopup categoryPopup = new CategoryPopup();
+                categoryPopup.Owner = this;
+                categoryPopup.Show();
             }
         }
 

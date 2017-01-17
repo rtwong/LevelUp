@@ -186,7 +186,38 @@ namespace LevelUp
 
         private void applyButton_Click(object sender, RoutedEventArgs e)
         {
+
+            HashSet<String> skillSet = new HashSet<String>();
+            List<String> stringList = new List<String>();
+
+            foreach (Canvas skillContainer in editSkillsContainerCanvas.Children.OfType<Canvas>())
+            {
+                List<TextBox> textBoxList = skillContainer.Children.OfType<TextBox>().ToList();
+                TextBox textBox = textBoxList[0];
+                String newSkillName = textBox.Text.ToLower().Replace(" ", "");
+
+                skillSet.Add(newSkillName);
+                stringList.Add(newSkillName);
+                
+                if (newSkillName.Length == 0)
+                {
+                    DuplicateEmptyPopup dialog = new DuplicateEmptyPopup();
+                    dialog.Owner = this;
+                    dialog.Show();
+                    return;
+                }
+                
+            }
             
+            if (skillSet.Count != stringList.Count)
+            {
+                DuplicateEmptyPopup dialog = new DuplicateEmptyPopup();
+                dialog.Owner = this;
+                dialog.Show();
+                return;
+            }
+            
+
             foreach (Canvas skillContainer in editSkillsContainerCanvas.Children.OfType<Canvas>())
             {
                 List<TextBox> textBoxList = skillContainer.Children.OfType<TextBox>().ToList();
